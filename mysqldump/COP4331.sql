@@ -24,10 +24,11 @@ DROP TABLE IF EXISTS `Contacts`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Contacts` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL DEFAULT '',
   `Phone` varchar(50) NOT NULL DEFAULT '',
   `Email` varchar(50) NOT NULL DEFAULT '',
   `UserID` int NOT NULL DEFAULT '0',
+  `FirstName` varchar(50) NOT NULL DEFAULT ' ',
+  `LastName` varchar(50) NOT NULL DEFAULT ' ',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
