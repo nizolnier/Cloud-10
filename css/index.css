@@ -30,7 +30,7 @@ h1 {
     font-size: 64px;
     line-height: 78px;
     color: white;
-    padding: 0.5em;
+    padding: 0.6em;
 }
 
 a {
@@ -44,7 +44,7 @@ u {
 }
 
 p {
-    padding: 0.2em;
+    padding: 0.4em;
 }
 
 .create {
