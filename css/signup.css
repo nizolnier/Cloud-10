@@ -3,6 +3,7 @@
 * {
     margin: 0;
     font-family: 'Montserrat', sans-serif;    
+    overflow: hidden;
 }
 
 .gradient {
@@ -34,6 +35,11 @@ form {
     height: 109px;
 }
 
+#signupResult {
+    color: #6C6C6C;
+    padding: 0.5em;
+}
+
 h1 {
     font-family: 'Montserrat';
     font-style: normal;
@@ -45,6 +51,11 @@ h1 {
 
 .formItem {
     padding: 0.8em;
+}
+
+.formItemPass {
+    display: flex;
+    flex-direction: column;
 }
 
 label {
@@ -69,6 +80,52 @@ input {
     padding-left: 0.5em;
 }
 
+#togglePassword {
+	position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 416px;
+    bottom: 124px;
+	cursor: pointer;
+    background-image: url("../images/eye.svg");
+    height: 24px; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#togglePassword:active {
+    background-color: #c859e3;
+    border-radius: 50%;
+}
+
+#password:invalid:not(:focus):not(:placeholder-shown) {
+    border: 1px solid #EF233C;
+    background: pink;
+}
+
+#password:invalid:focus:not(:placeholder-shown) {
+    border: 1px solid #EF233C;
+    background: pink;
+    & ~ .requirements {
+      display: inline;
+    }
+    & ~ #togglePassword {
+        bottom: 146px;
+    }
+}
+
+.requirements {
+    transition: 0.28s;
+    display: none;
+    color: #EF233C;
+    font-size: 13px;
+    text-align: center;
+    max-width: 415px;
+    margin-top: 0.5em;
+  }
+
+
 button {
     width: 415px;
     height: 44px;
@@ -83,6 +140,7 @@ button:focus { outline: none; }
 
 button:hover {
     background: #6d0387;
+    cursor: pointer;
 }
 
 p {
@@ -95,6 +153,11 @@ p {
 }
 
 u {
+    color: #A700D0;
+}
+
+a {
+    text-decoration: none;    
     color: #A700D0;
 }
 

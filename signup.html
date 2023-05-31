@@ -6,39 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="./css/signup.css">
+    <script type="text/javascript" src="./js/md5.js"></script>
 </head>
 <body>
     <div class="gradient">
-        <form>
+        <form >
             <img class="logo" src="./images/cloud-10.svg" />
             <h1>SIGN UP</h1>
+            <div id="signupResult">Welcome!</div>
             <div class="formItem">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" placeholder="Enter your first name">
+                <label for="fname">First Name *</label>
+                <input required type="text" id="fname" name="fname" placeholder="Enter your first name">
             </div>
             <div class="formItem">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" placeholder="Enter your last name">
+                <label for="lname">Last Name *</label>
+                <input required type="text" id="lname" name="lname" placeholder="Enter your last name">
             </div>
             <div class="formItem">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username">
+                <label for="username">Username *</label>
+                <input required type="text" id="username" name="username" placeholder="Enter your username" pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$">
+            </div>
+            <div class="formItem formItemPass">
+                <label for="password">Password *</label>
+                <input required type="password" id="password" name="password" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}">
+                <div id="togglePassword"></div>
+                <p class="requirements">Your password must be at least 8 characters as well as contain at least one letter, one number, and one special character ☹️</p>
             </div>
             <div class="formItem">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password">
-            </div>
-            <div class="formItem">
-                <button>
+                <button type="button" onclick="sendForm()">
                     SIGN UP
                 </button>
             </div>
-            <p>Already have an account? <u>Log In</u></p>
-
+            <p>Already have an account? <u><a href="./login.html">Log In</a></u></p>
         </form>
         <footer>
             <img class="clouds" src="./images/bottom-clouds.svg" />
         </footer>
     </div>
 </body>
+<script type="text/javascript" src="./js/togglePassword.js"></script>
+<script type="text/javascript" src="./js/signup.js"></script>
 </html>
