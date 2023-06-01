@@ -36,7 +36,7 @@ paths:
           description: User signed up successfully
         400:
           description: Invalid request body
-  /Login:
+  /Login.php:
     get:
       summary: Login to the system
       consumes:

@@ -9,6 +9,9 @@
     # $login = $inData["login"];
     # $password = $inData["password"];
 
+	#header("Content-Type: application/json");
+	#header("Access-Control-Allow-Methods: POST");
+
 	$firstName = $_POST['firstName'];
 	$lastName = $_POST['lastName'];
 	$login = $_POST['login'];
@@ -16,6 +19,8 @@
 
 	# Change this for your local DB.
 	$conn = new mysqli("localhost", "root", "sqlPass123", "COP4331");
+	
+
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
