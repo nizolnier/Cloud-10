@@ -48,3 +48,6 @@ function showLog(){
     inputLog.style.display="block";
     inputSign.style.display="none";
 }
+
+
+

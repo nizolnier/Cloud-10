@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/login.css">
+        <scipt type="text/javascript" src = "./js/register.js"></scipt>
     </head>
     <body>
         <main>
@@ -52,7 +53,7 @@
                             <input id="passwordSignUp" class="inputs signInputs" type="password" required pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}" placeholder="Create your Password">
                         </p>
 
-                        <button type="submit" register class="send">Register</button>
+                        <button onclick="grabSignUp()" type="submit" register class="send">Register </button>
                         <!-- username Validator box -->
                         <div id="userTriValid"class="triangle"></div>
                         <div id="userValid" class="validator">
@@ -74,7 +75,7 @@
                     </form>
                 </div>
             </div>
-
+            
             <script type="text/javascript" src="./js/login.js"></script>
             <!-- username validator script -->
             <script>

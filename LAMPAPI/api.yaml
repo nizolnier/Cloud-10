@@ -1,0 +1,61 @@
+swagger: "2.0"
+info:
+  title: Contact Manager API
+  version: 1.0.0
+host: localhost:8000
+basePath: /LAMPAPI
+schemes:
+  - http
+paths:
+  /SignUp.php:
+    post:
+      summary: up a user
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: firstName
+          in: formData
+          type: string
+          required: true
+        - name: lastName
+          in: formData
+          type: string
+          required: true
+        - name: login
+          in: formData
+          type: string
+          required: true
+        - name: password
+          in: formData
+          type: string
+          required: true
+      responses:
+        200:
+          description: User signed up successfully
+        400:
+          description: Invalid request body
+  /Login:
+    get:
+      summary: Login to the system
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: username
+          in: formData
+          description: The user's username
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: The user's password
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Login successful
+        '401':
+          description: Invalid username or password
