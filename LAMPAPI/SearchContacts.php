@@ -5,6 +5,7 @@
 	$searchResults = "";
 	$searchCount = 0;
 
+	// Update with our SQL DB
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
 	{
@@ -26,7 +27,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-            $searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '"}'
+            $searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '"}';
 		}
 		
 		if( $searchCount == 0 )
