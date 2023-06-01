@@ -1,17 +1,33 @@
 swagger: "2.0"
 info:
+  description: This is the API documentation for group 10's Contact Manager
   title: Contact Manager API
   version: 1.0.0
-host: localhost:8000
+  title: Cloud 10 Contact Manager
+API team
+  contact: 
+    name: Evangelos Kontonotas
+    email: evangelos.kontonotas@knights.ucf.edu
+    name: Joseph Torres
+    email: joseph.torres@knights.ucf.edu
+
+    license:
+      name: Apache 2.0
+      url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: http://146.190.67.167
 basePath: /LAMPAPI
 schemes:
   - http
 paths:
   /SignUp.php:
     post:
-      summary: up a user
+      tags:
+      -Users 
+      summary: Signs up a user
+      operationId: login.js
+      description: Signs up a user
       consumes:
-        - application/x-www-form-urlencoded
+        - application/json
       produces:
         - application/json
       parameters:
@@ -38,9 +54,11 @@ paths:
           description: Invalid request body
   /Login.php:
     get:
-      summary: Login to the system
+      summary: User logs into the system
+      operationId: login.js
+      description: User logs into the system
       consumes:
-        - application/x-www-form-urlencoded
+        - application/json
       produces:
         - application/json
       parameters:
@@ -59,3 +77,154 @@ paths:
           description: Login successful
         '401':
           description: Invalid username or password
+  /AddContact:
+    get:
+      summary: Adds contact to User's contacts
+
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: firstName
+          in: formData
+          description: The user's first name
+          required: true
+          type: string
+        - name: lastName
+          in: formData
+          description: The user's last name
+          required: true
+          type: string
+        - name: phoneNumber 
+          in: formData
+          description: The user's phone number
+          required: true
+          type: string
+        - name: emailAddress 
+          in: formData
+          description: The user's email address
+          required: true
+          type: string
+        - name: userID 
+          in: formData
+          description: The user's ID 
+          required: true
+          type: integer 
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: URL not found
+  /DeleteContact:
+    get:
+      summary: Login to the system
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: firstName
+          in: formData
+          description: The contact's first name
+          required: true
+          type: string
+        - name: lastName
+          in: formData
+          description: The contact's last name
+          required: true
+          type: string
+        - name: userId
+          in: formData
+          description: The contact's userId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Login successful
+        '401':
+          description: IURL not found
+  /SearchContacts:
+    post:
+      summary: Searches for contacts
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: firstName
+          in: formData
+          description: The contact's first name
+          required: true
+          type: string
+        - name: lastName
+          in: formData
+          description: The contact's last name
+          required: true
+          type: string
+        - name: userID
+          in: formData
+          description: The contact's userId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: URL not found
+  /SearchUsers:
+    post:
+      summary: Searches for users in the database
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: login
+          in: formData
+          description: The user's login
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Username already taken
+  /UpdateContact:
+    post:
+      summary: Updates selected contact 
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: newFirst
+          in: formData
+          description: Contact's updated first name
+          required: true
+          type: string
+        - name: newLast
+          in: formData
+          description: Contact's updated last name
+          required: true
+          type: string
+        - name: phoneNumber
+          in: formData
+          description: Contact's phone number
+          required: true
+          type: string
+        - name: emailAddress
+          in: formData
+          description: Contact's email address
+          required: true
+          type: string
+        - name: id
+          in: formData
+          description: Contact's user ID
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: URL not found

@@ -1,24 +1,36 @@
 <?php
 
+	ini_set('display_errors', 1);
+	error_reporting(E_ALL);
+
+	echo "Beginning of php script!\n";
+
+
 	$inData = getRequestInfo();
 
+
+	echo "Is this working?";
 	# Don't know the exact reason this doesn't work.
 
-	# $firstName = $inData["firstName"];
-    # $lastName = $inData["lastName"];
-    # $login = $inData["login"];
-    # $password = $inData["password"];
+	#$firstName = $inData["firstName"];
+    #$lastName = $inData["lastName"];
+    #$login = $inData["login"];
+    #$password = $inData["passsword"];
 
-	#header("Content-Type: application/json");
-	#header("Access-Control-Allow-Methods: POST");
+	header("Content-Type: application/json");
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+	header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
+
+	
 	$firstName = $_POST['firstName'];
 	$lastName = $_POST['lastName'];
 	$login = $_POST['login'];
 	$password = $_POST['password'];
 
 	# Change this for your local DB.
-	$conn = new mysqli("localhost", "root", "sqlPass123", "COP4331");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	
 
 	if ($conn->connect_error)
@@ -72,5 +84,8 @@
 		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
+
+
+
 
 ?>
