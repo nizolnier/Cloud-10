@@ -17,9 +17,9 @@
 form {
     position: absolute;
     width: 475px;
-    height: 550px;
-    left: calc(50% - 475px/2 - 0.5px);
-    top: calc(50% - 550px/2);
+    height: 663px;
+    left: calc(50% - 475px/2 + 0.5px);
+    top: calc(50% - 663px/2 - 0.5px);
     background: #FFFFFF;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -35,9 +35,9 @@ form {
     height: 109px;
 }
 
-#loginResult {
+#signupResult {
     color: #6C6C6C;
-    padding: 1.5em;
+    padding: 0.5em;
 }
 
 h1 {
@@ -51,6 +51,11 @@ h1 {
 
 .formItem {
     padding: 0.8em;
+}
+
+.formItemPass {
+    display: flex;
+    flex-direction: column;
 }
 
 label {
@@ -80,7 +85,7 @@ input {
     width: 24px;
     height: 24px;
     left: 416px;
-    bottom: 146px;
+    bottom: 124px;
 	cursor: pointer;
     background-image: url("../images/eye.svg");
     height: 24px; 
@@ -93,6 +98,33 @@ input {
     background-color: #c859e3;
     border-radius: 50%;
 }
+
+#password:invalid:not(:focus):not(:placeholder-shown) {
+    border: 1px solid #EF233C;
+    background: pink;
+}
+
+#password:invalid:focus:not(:placeholder-shown) {
+    border: 1px solid #EF233C;
+    background: pink;
+    & ~ .requirements {
+      display: inline;
+    }
+    & ~ #togglePassword {
+        bottom: 146px;
+    }
+}
+
+.requirements {
+    transition: 0.28s;
+    display: none;
+    color: #EF233C;
+    font-size: 13px;
+    text-align: center;
+    max-width: 415px;
+    margin-top: 0.5em;
+  }
+
 
 button {
     width: 415px;

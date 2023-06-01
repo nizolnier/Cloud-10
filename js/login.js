@@ -1,50 +1,86 @@
-function showReg(){
-    var login = document.getElementById("loginicon");
-    var reg = document.getElementById("signupicon");
-    var form =document.getElementById("form");
-    var inputLog = document.getElementById("inputLog");
-    var inputSign = document.getElementById("inputSignUp");
+const baseURL = 'http://cop4331group10.xyz/LAMPAPI' 
 
-    login.style.pointerEvents="auto";
-    login.style.backgroundColor="transparent";
-    login.style.border="0";
-    login.style.color="white";
+sendForm = () => {
+    let username = document.getElementById("username").value
+    let password = document.getElementById("password").value
+    let userId = 0 
+    let firstName = "" 
+    let lastName = "" 
 
-    reg.style.pointerEvents="none";
-    reg.style.backgroundColor="white";
-    reg.style.border="0";
-    reg.style.borderTop="2px solid #a700d0";
-    reg.style.borderRadius="20px 0 0 0";
-    reg.style.color="black";
+    let payload = {
+        login: username,
+        password: password
+    }
 
-    form.style.height="663px";
+    if (!validateForm(payload)) {
+        document.getElementById("loginResult").innerHTML = "Invalid login!"
+        return
+    }
 
-    inputLog.style.display="none";
-    inputSign.style.display="block";
+    let hash = md5(password) 
 
+    payload.password = md5(password)
+
+    let jsonPayload = JSON.stringify(payload) 
+
+    let newRequest = new XMLHttpRequest() 
+
+    newRequest.open("POST", `${baseURL}/Login.php`) 
+    newRequest.setRequestHeader("Content-type", "application/json  charset=UTF-8") 
+
+    try {
+        newRequest.onreadystatechange = () => {
+            if (this.readyState == 4 && this.status == 200) {
+
+                let jsonObject = JSON.parse(newRequest.responseText)
+                userId = jsonObject.id
+
+                if (userId < 1) {
+                    document.getElementById("loginResult").innerHTML = "User/Password combination incorrect"
+                    return
+                }
+
+                firstName = jsonObject.firstName
+                lastName = jsonObject.lastName
+
+                const foundUser = { firstName, lastName, userId }
+
+                saveCookie(foundUser)
+                window.location.href = "contacts.html"
+            }
+        }
+
+        newRequest.send(jsonPayload)
+    } catch (err) {
+        document.getElementById("loginResult").innerHTML = err.message
+    }
 }
-function showLog(){
-    var login = document.getElementById("loginicon");
-    var reg = document.getElementById("signupicon");
-    var form =document.getElementById("form");
-    var inputLog = document.getElementById("inputLog");
-    var inputSign = document.getElementById("inputSignUp");
 
+validateForm = (newLog) => {
+    const { username, password } = newLog
 
-    login.style.pointerEvents="none";
-    login.style.backgroundColor="white";
-    login.style.border="0";
-    login.style.borderTop="2px solid #a700d0";
-    login.style.borderRadius="0 20px 0 0";
-    login.style.color="black";
+    if (username == "") {
+        console.log("Username is blank")
+        return false
+    }
+    let regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/
 
-    reg.style.pointerEvents="auto";
-    reg.style.backgroundColor="transparent";
-    reg.style.border="0";
-    reg.style.color="white";
+    if (regex.test(username) == false) {
+        console.log("Username is not valid")
+        return false
+    }
 
-    form.style.height="550px";
-    
-    inputLog.style.display="block";
-    inputSign.style.display="none";
+    if (password == "") {
+        console.log("Password is blank")
+        return false
+    }
+
+    regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/
+
+    if (regex.test(password) == false) {
+        console.log("Password is not valid")
+        return false
+    }
+
+    return true
 }

@@ -3,6 +3,7 @@
 * {
     margin: 0;
     font-family: 'Montserrat', sans-serif;    
+    overflow: hidden;
 }
 
 .gradient {
@@ -13,14 +14,15 @@
 
 .logo {
     position: absolute;
-    width: 203px;
-height: 182px;
-left: 640px;
-top: 50px;
+    width: 200px;
+    height: 180px;
+    left: 640px;
+    top: 50px;
 }
 
 .clouds {
     width: 100vw;
+    height: auto;
 }
 
 h1 {
