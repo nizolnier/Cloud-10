@@ -2,11 +2,19 @@
 
 	$inData = getRequestInfo();
 
-	$firstName = $inData["firstName"];
-    $lastName = $inData["lastName"];
-    $login = $inData["login"];
-    $password = $inData["password"];
+	# Don't know the exact reason this doesn't work.
 
+	# $firstName = $inData["firstName"];
+    # $lastName = $inData["lastName"];
+    # $login = $inData["login"];
+    # $password = $inData["password"];
+
+	$firstName = $_POST['firstName'];
+	$lastName = $_POST['lastName'];
+	$login = $_POST['login'];
+	$password = $_POST['password'];
+
+	# Change this for your local DB.
 	$conn = new mysqli("localhost", "root", "sqlPass123", "COP4331");
 	if ($conn->connect_error)
 	{
