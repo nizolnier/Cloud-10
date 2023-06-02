@@ -8,6 +8,11 @@
 	# $userId = $inData["userId"];
 
 
+	header("Content-Type: application/json");
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+	header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
 	$phoneNumber = $_POST['phoneNumber'];
 	$emailAddress = $_POST['emailAddress'];
 	$newFirst = $_POST['newFirstName'];
@@ -15,18 +20,20 @@
     $id = $_POST['id'];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, PhoneNumber, EmailAddress, UserId) VALUES(?,?,?,?,?)");
-		$stmt->bind_param("ssssi", $firstName, $lastName, $phoneNumber, $emailAddress, $userID);
+		$stmt = $conn->prepare("INSERT into Contacts (Phone, Email, UserID, FirstName, LastName) VALUES(?,?,?,?,?)");
+		$stmt->bind_param("ssiss", $phoneNumber, $emailAddress, $id, $newFirst, $newLast);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
+		http_response_code(200);
+		echo ("Succesful");
 	}
 
 	function getRequestInfo()
