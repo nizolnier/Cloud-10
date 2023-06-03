@@ -1,5 +1,4 @@
 <?php
-
 	ini_set('display_errors', 1);
 	error_reporting(E_ALL);
 
@@ -55,7 +54,6 @@
 			$conn->close();
 			http_response_code(200);
 			$searchResults .= '{'.'"id": "'.$id.''.'"}';
-
 			returnWithInfo($searchResults);
 		} else {
 			http_response_code(409);
@@ -84,8 +82,5 @@
 		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-
-
-
 
 ?>
