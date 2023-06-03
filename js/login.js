@@ -17,8 +17,6 @@ sendForm = () => {
         return
     }
 
-    // let hash = md5(password) 
-
     payload.Password = md5(password)
 
     let jsonPayload = JSON.stringify(payload) 
@@ -49,7 +47,7 @@ sendForm = () => {
                 lastName = jsonObject.lastName;
 
                 const foundUser = { firstName, lastName, userId };
-                console.log("Working?");
+                // console.log("Working?");
                 saveCookie(foundUser);
                 window.location.href = "contacts.html";
             }

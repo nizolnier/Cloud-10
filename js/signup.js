@@ -44,7 +44,6 @@ sendForm = () => {
 
 
             if (newRequest.readyState != 4) {
-                console.log("INside");
                 return;
             }
 
@@ -53,9 +52,9 @@ sendForm = () => {
                 return;
             }
             
-            console.log("HI!");
+            // console.log("HI!");
             if (newRequest.status == 200) {
-                console.log("HELLOOO!");
+                console.log("Sucess!");
                 // let jsonObject = JSON.parse(newRequest.responseText);
                 document.getElementById("signupResult").innerHTML = "User added, redirecting to log in";
                 window.location.href = "login.html";
