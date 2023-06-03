@@ -1,33 +1,17 @@
 swagger: "2.0"
 info:
-  description: This is the API documentation for group 10's Contact Manager
   title: Contact Manager API
   version: 1.0.0
-  title: Cloud 10 Contact Manager
-API team
-  contact: 
-    name: Evangelos Kontonotas
-    email: evangelos.kontonotas@knights.ucf.edu
-    name: Joseph Torres
-    email: joseph.torres@knights.ucf.edu
-
-    license:
-      name: Apache 2.0
-      url: http://www.apache.org/licenses/LICENSE-2.0.html
-host: http://146.190.67.167
+host: cop4331group10.xyz
 basePath: /LAMPAPI
 schemes:
   - http
 paths:
   /SignUp.php:
     post:
-      tags:
-      -Users 
-      summary: Signs up a user
-      operationId: login.js
-      description: Signs up a user
+      summary: up a user
       consumes:
-        - application/json
+        - application/x-www-form-urlencoded
       produces:
         - application/json
       parameters:
@@ -53,21 +37,19 @@ paths:
         400:
           description: Invalid request body
   /Login.php:
-    get:
-      summary: User logs into the system
-      operationId: login.js
-      description: User logs into the system
+    post:
+      summary: Login to the system
       consumes:
-        - application/json
+        - application/x-www-form-urlencoded
       produces:
         - application/json
       parameters:
-        - name: username
+        - name: Login
           in: formData
           description: The user's username
           required: true
           type: string
-        - name: password
+        - name: Password
           in: formData
           description: The user's password
           required: true
@@ -77,50 +59,49 @@ paths:
           description: Login successful
         '401':
           description: Invalid username or password
-  /AddContact:
-    get:
-      summary: Adds contact to User's contacts
-
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: firstName
-          in: formData
-          description: The user's first name
-          required: true
-          type: string
-        - name: lastName
-          in: formData
-          description: The user's last name
-          required: true
-          type: string
-        - name: phoneNumber 
-          in: formData
-          description: The user's phone number
-          required: true
-          type: string
-        - name: emailAddress 
-          in: formData
-          description: The user's email address
-          required: true
-          type: string
-        - name: userID 
-          in: formData
-          description: The user's ID 
-          required: true
-          type: integer 
-      responses:
-        '200':
-          description: OK
-        '401':
-          description: URL not found
-  /DeleteContact:
-    get:
+  /AddContact.php:
+      post:
+        summary: Adds contact to User's contacts
+        consumes:
+          - application/x-www-form-urlencoded
+        produces:
+          - application/json
+        parameters:
+          - name: newFirstName
+            in: formData
+            description: The user's first name
+            required: true
+            type: string
+          - name: newLastName
+            in: formData
+            description: The user's last name
+            required: true
+            type: string
+          - name: phoneNumber 
+            in: formData
+            description: The user's phone number
+            required: true
+            type: string
+          - name: emailAddress 
+            in: formData
+            description: The user's email address
+            required: true
+            type: string
+          - name: id 
+            in: formData
+            description: The user's ID 
+            required: true
+            type: integer 
+        responses:
+          '200':
+            description: OK
+          '401':
+            description: URL not found
+  /DeleteContact.php:
+    post:
       summary: Login to the system
       consumes:
-        - application/json
+        - application/x-www-form-urlencoded
       produces:
         - application/json
       parameters:
@@ -143,12 +124,12 @@ paths:
         '200':
           description: Login successful
         '401':
-          description: IURL not found
-  /SearchContacts:
+          description: URL not found
+  /SearchContacts.php:
     post:
       summary: Searches for contacts
       consumes:
-        - application/json
+        - application/x-www-form-urlencoded
       produces:
         - application/json
       parameters:
@@ -172,11 +153,11 @@ paths:
           description: OK
         '401':
           description: URL not found
-  /SearchUsers:
+  /SearchUsers.php:
     post:
       summary: Searches for users in the database
       consumes:
-        - application/json
+        - application/x-www-form-urlencoded
       produces:
         - application/json
       parameters:
@@ -190,11 +171,11 @@ paths:
           description: OK
         '401':
           description: Username already taken
-  /UpdateContact:
+  /UpdateContact.php:
     post:
       summary: Updates selected contact 
       consumes:
-        - application/json
+        - application/x-www-form-urlencoded
       produces:
         - application/json
       parameters:
