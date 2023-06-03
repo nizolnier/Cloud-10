@@ -29,7 +29,7 @@ sendForm = () => {
 
     let newRequest = new XMLHttpRequest();
     
-    newRequest.open("POST", `${baseURL}/SignUp.php`);
+    newRequest.open("POST", `${baseURL}/SignUp.php`, true);
 
     newRequest.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
@@ -45,7 +45,7 @@ sendForm = () => {
                 return;
             }
 
-            if (this.status == 200) {
+            if (newRequest.status == 200) {
                 let jsonObject = JSON.parse(newRequest.responseText);
                 document.getElementById("signupResult").innerHTML = "User added, redirecting to log in";
                 window.location.href = "./login.html"

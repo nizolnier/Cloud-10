@@ -25,34 +25,39 @@ sendForm = () => {
 
     let newRequest = new XMLHttpRequest() 
 
-    newRequest.open("POST", `${baseURL}/Login.php`) 
+    newRequest.open("POST", `${baseURL}/Login.php`, true) 
     newRequest.setRequestHeader("Content-type", "application/json  charset=UTF-8") 
 
     try {
-        newRequest.onreadystatechange = () => {
-            if (this.readyState == 4 && this.status == 200) {
 
-                let jsonObject = JSON.parse(newRequest.responseText)
-                userId = jsonObject.id
+        newRequest.send(jsonPayload);
+        console.log("HEllO!");
+        newRequest.onreadystatechange = () => {
+            if (newRequest.readyState == 4 && newRequest.status == 200) {
+
+                console.log(newRequest.readyState);
+
+                let jsonObject = JSON.parse(newRequest.responseText);
+                userId = jsonObject.id;
 
                 if (userId < 1) {
-                    document.getElementById("loginResult").innerHTML = "User/Password combination incorrect"
-                    return
+                    document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+                    return;
                 }
 
-                firstName = jsonObject.firstName
-                lastName = jsonObject.lastName
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
 
-                const foundUser = { firstName, lastName, userId }
-
-                saveCookie(foundUser)
-                window.location.href = "contacts.html"
+                const foundUser = { firstName, lastName, userId };
+                console.log("Working?");
+                saveCookie(foundUser);
+                window.location.href = "contacts.html";
             }
         }
 
-        newRequest.send(jsonPayload)
+        
     } catch (err) {
-        document.getElementById("loginResult").innerHTML = err.message
+        document.getElementById("loginResult").innerHTML = err.message;
     }
 }
 
