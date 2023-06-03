@@ -84,3 +84,6 @@ validateForm = (newLog) => {
 
     return true
 }
+
+
+

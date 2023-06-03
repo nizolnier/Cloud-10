@@ -1,37 +1,185 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-    <script type="text/javascript" src="./js/md5.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/login.css">
-</head>
-<body>
-    <div class="gradient">
-        <form>
-            <img class="logo" src="./images/cloud-10.svg" />
-            <h1>LOG IN</h1>
-            <div id="loginResult">Enter your credentials to access your account</div>
-            <div class="formItem">
-                <label for="username">Username *</label>
-                <input required type="text" id="username" name="username" placeholder="Enter your username" pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$">
-            </div>
-            <div class="formItem">
-                <label for="password">Password *</label>
-                <input required type="password" id="password" name="password" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}">
-                <div id="togglePassword"></div>
-            </div>
-            <div class="formItem">
-                <button type="button" onclick="sendForm()">
-                    LOG IN
-                </button>
-            </div>
-            <p>Don't have an account? <u><a href="./signup.html">Sign Up</a></u></p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/login.css">
+    </head>
+    <body>
+        <main>
+            <div id="form" class="form">
+                <img class="logo" src="./Images/logo-circle.svg" alt="Cloud 10">
+                <div id= buttbox class="actionbox">
+                    <button class="lsbutton" id="loginicon" onclick="showLog()">LOGIN</button>
+                    <button class="lsbutton" id="signupicon" onclick="showReg()">SignUP</button>
+                </div>
+                <div id="inputLog" class="input-box">
+                    <form id="loginform">
+                        <h2>Welcome!</h2>
+                        <h3>Enter your credentials to access your account</h3>
+                        <br>
+                        <p class="p">Username<br>
+                            <input id="usernameLog" class="inputs" type="text" placeholder="Username" required>
+                        </p>
+                        
+                        <!-- <br> -->
 
-        </form>
+                        <p class="p">Password<br>
+                            <input id="passwordLog" class="inputs" type="password" placeholder="Passowrd" required>
+                        </p>
+                        
+                        <br>
+
+                        <button type="submit" id="signin" class="send">Sign In</button>
+                    </form>
+                </div>
+<!-- change valid image, change popup box fonts order and stuff (the style of the popup validators), signin button, register button, -->
+                <div id="inputSignUp" class="input-box">
+                    <form id="signupform">
+                        <br>
+                        <p class="p" id="rightSide">* = Required Fields</p>
+                        <p class="p">First Name *<br> 
+                            <input id="nameFirst" class="inputs signInputs" type="text" required placeholder="Enter your First Name. Ex.John">
+                        </p>
+                        <p class="p">Last Name *<br> 
+                            <input id="nameLast" class="inputs signInputs" type="text" required placeholder="Enter your Last Name. Ex.Doe">
+                        </p>
+                        <p class="p">Create Username *<br> 
+                            <input id="usernameSignUp" class="inputs signInputs" type="text" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9]{3,25}" placeholder="Create your Username">
+                        </p>
+                        
+                        <p class="p">Create Password *<br> 
+                            <input id="passwordSignUp" class="inputs signInputs" type="password" required pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}" placeholder="Create your Password">
+                        </p>
+
+                        <button type="submit" register class="send">Register</button>
+                        <!-- username Validator box -->
+                        <div id="userTriValid"class="triangle"></div>
+                        <div id="userValid" class="validator">
+                            <h3>Username must contain the following:</h3>
+                            <p id="uletter" class="invalid">At least 1 Letter</p>
+                            <p id="ulength" class="invalid">Have 3-25 Characters</p>
+                        </div>
+
+                        <!-- password validator box -->
+                        <div id="passTriValid"class="triangle"></div>
+                        <div id="passValid" class="validator">
+                            <h3>Password must contain the following:</h3>
+                            <p id="pletter" class="invalid">At least 1 Letter</p>
+                            <p id="pnumber" class="invalid">At least 1 Number</p>
+                            <p id="pspecial" class="invalid">At least 1 Special Character</p>
+                            <p id="plength" class="invalid">Have 8-32 characters</p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <script type="text/javascript" src="./js/login.js"></script>
+            <!-- username validator script -->
+            <script>
+                let uLet = document.getElementById("uletter");
+                let uLen = document.getElementById("ulength");
+                let userVal = document.getElementById("usernameSignUp");
+
+                userVal.onfocus = function(){
+                    document.getElementById("userTriValid").style.display="block";
+                    document.getElementById("userValid").style.display="block";
+                }
+
+                userVal.onblur = function(){
+                    document.getElementById("userTriValid").style.display="none";
+                    document.getElementById("userValid").style.display="none";
+                }
+
+                userVal.onkeyup = function(){
+
+                    var letter = /[a-zA-Z]/g;
+
+                    if ((userVal.value.length >= 3 && userVal.value.length<=25)){
+                        uLen.classList.remove("invalid");
+                        uLen.classList.add("valid");
+                    }
+                    else{
+                        uLen.classList.remove("valid");
+                        uLen.classList.add("invalid");
+                    }
+
+                    if(userVal.value.match(letter)){
+                        uLet.classList.remove("invalid");
+                        uLet.classList.add("valid");
+                    }
+                    else{
+                        uLet.classList.remove("valid");
+                        uLet.classList.add("invalid");
+                    }
+                }
+                
+
+
+            </script>
+            <!-- password validator script -->
+            <script>
+                let pLet = document.getElementById("pletter");
+                let pLen = document.getElementById("plength");
+                let pNum = document.getElementById("pnumber");
+                let pSpec = document.getElementById("pspecial");
+                let passVal = document.getElementById("passwordSignUp");
+
+                passVal.onfocus = function(){
+                    document.getElementById("passTriValid").style.display="block";
+                    document.getElementById("passValid").style.display="block";
+                }
+
+                passVal.onblur = function(){
+                    document.getElementById("passTriValid").style.display="none";
+                    document.getElementById("passValid").style.display="none";
+                }
+                
+                passVal.onkeyup = function(){
+                    var nums = /[0-9]/g;
+                    var lett = /[a-zA-Z]/g;
+                    var spec = /[!@#$%^&*]/g;
+
+                    if(passVal.value.length>=8 && passVal.value.length<=32){
+                        pLen.classList.remove("invalid");
+                        pLen.classList.add("valid");
+                    }
+                    else{
+                        pLen.classList.remove("valid");
+                        pLen.classList.add("invalid");
+                    }
+
+                    if(passVal.value.match(lett)){
+                        pLet.classList.remove("invalid");
+                        pLet.classList.add("valid");
+                    }
+                    else{
+                        pLet.classList.remove("valid");
+                        pLet.classList.add("invalid");
+                    }
+
+                    if(passVal.value.match(nums)){
+                        pNum.classList.remove("invalid");
+                        pNum.classList.add("valid");
+                    }
+                    else{
+                        pNum.classList.remove("valid");
+                        pNum.classList.add("invalid");
+                    }
+
+                    if(passVal.value.match(spec)){
+                        pSpec.classList.remove("invalid");
+                        pSpec.classList.add("valid");
+                    }
+                    else{
+                        pSpec.classList.remove("valid");
+                        pSpec.classList.add("invalid");
+                    }
+                }
+            </script>
+        </main>
         <footer>
             <img class="clouds" src="./images/bottom-clouds.svg" />
         </footer>

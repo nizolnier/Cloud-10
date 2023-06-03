@@ -14,7 +14,7 @@ sendForm = () => {
     const payload = {
         firstName: fname,
         lastName: lname,
-        username: username,
+        login: username,
         password: password
     }
 
@@ -32,6 +32,7 @@ sendForm = () => {
     newRequest.open("POST", `${baseURL}/SignUp.php`);
 
     newRequest.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
 
     try {
         newRequest.onreadystatechange = () => {
