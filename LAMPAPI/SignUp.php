@@ -58,7 +58,7 @@
 			$stmt->close();
 			$conn->close();
 			http_response_code(200);
-			$searchResults .= '{'.'"id": "'.$id.''.'"}';
+			$searchResults .= '{'.'"id":"'.$id.''.'"}';
 			returnWithInfo($searchResults);
 		} else {
 			http_response_code(409);

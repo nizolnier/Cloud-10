@@ -35,8 +35,16 @@ sendForm = () => {
 
 
     try {
+
+        newRequest.send(jsonPaylod);
+
         newRequest.onreadystatechange = () => {
-            if (this.readyState != 4) {
+            console.log(newRequest.readyState);
+            console.log(newRequest.status)
+
+
+            if (newRequest.readyState != 4) {
+                console.log("INside");
                 return;
             }
 
@@ -44,11 +52,13 @@ sendForm = () => {
                 document.getElementById("signupResult").innerHTML = "User already exists";
                 return;
             }
-
+            
+            console.log("HI!");
             if (newRequest.status == 200) {
-                let jsonObject = JSON.parse(newRequest.responseText);
+                console.log("HELLOOO!");
+                // let jsonObject = JSON.parse(newRequest.responseText);
                 document.getElementById("signupResult").innerHTML = "User added, redirecting to log in";
-                window.location.href = "./login.html"
+                window.location.href = "login.html";
             }
 
             else {
@@ -58,7 +68,7 @@ sendForm = () => {
 
         }
 
-        newRequest.send(jsonPaylod);
+        
 
     }
     catch (error) {
