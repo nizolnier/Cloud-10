@@ -12,22 +12,26 @@
 	echo "Is this working?";
 	# Don't know the exact reason this doesn't work.
 
-	#$firstName = $inData["firstName"];
-    #$lastName = $inData["lastName"];
-    #$login = $inData["login"];
-    #$password = $inData["passsword"];
+	
 
+	header('Access-Control-Allow-Origin: http://146.190.67.167');
+	header('Access-Control-Allow-Origin: http://146.190.67.167/LAMPAPI/SignUp.php');
 	header("Content-Type: application/json");
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 	header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 
+
+	$firstName = $inData["firstName"];
+    $lastName = $inData["lastName"];
+    $login = $inData["login"];
+    $password = $inData["password"];
 	
-	$firstName = $_POST['firstName'];
-	$lastName = $_POST['lastName'];
-	$login = $_POST['login'];
-	$password = $_POST['password'];
+	#$firstName = $_POST['firstName'];
+	#$lastName = $_POST['lastName'];
+	#$login = $_POST['login'];
+	#$password = $_POST['password'];
 
 	# Change this for your local DB.
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");

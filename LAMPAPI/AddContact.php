@@ -13,11 +13,11 @@
 	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 	header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
-	$phoneNumber = $_POST['phoneNumber'];
-	$emailAddress = $_POST['emailAddress'];
-	$newFirst = $_POST['newFirstName'];
-	$newLast = $_POST['newLastName'];
-    $id = $_POST['id'];
+	$phoneNumber = $inData['phoneNumber'];
+	$emailAddress = $inData['emailAddress'];
+	$newFirst = $inData['newFirstName'];
+	$newLast = $inData['newLastName'];
+    $id = $inData['id'];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
