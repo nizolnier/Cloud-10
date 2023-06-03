@@ -2,7 +2,7 @@
 
 function grabSignUp() {
     console.log("FUNCTION RUNNING");
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     
     xhr.open("POST", '/LAMPAPI/SignUp.php');
     xhr.setRequestHeader('Content-Type', 'application/json');
