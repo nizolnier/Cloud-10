@@ -28,8 +28,7 @@ sendForm = () => {
     const jsonPaylod = JSON.stringify(payload)
 
     let newRequest = new XMLHttpRequest();
-    let newRequest = new XMLHttpRequest();
-
+    
     newRequest.open("POST", `${baseURL}/SignUp.php`);
 
     newRequest.setRequestHeader("Content-type", "application/json; charset=UTF-8");
