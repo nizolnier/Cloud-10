@@ -86,4 +86,3 @@ validateForm = (newLog) => {
 }
 
 
-

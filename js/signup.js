@@ -11,7 +11,7 @@ sendForm = () => {
     console.log(username)
     console.log(password)
 
-    const payload = {
+    let payload = {
         firstName: fname,
         lastName: lname,
         login: username,
@@ -27,6 +27,7 @@ sendForm = () => {
 
     const jsonPaylod = JSON.stringify(payload)
 
+    let newRequest = new XMLHttpRequest();
     let newRequest = new XMLHttpRequest();
 
     newRequest.open("POST", `${baseURL}/SignUp.php`);
