@@ -8,8 +8,8 @@ sendForm = () => {
     let lastName = "" 
 
     let payload = {
-        login: username,
-        password: password
+        Login: username,
+        Password: password
     }
 
     if (!validateForm(payload)) {
@@ -17,9 +17,9 @@ sendForm = () => {
         return
     }
 
-    let hash = md5(password) 
+    // let hash = md5(password) 
 
-    payload.password = md5(password)
+    payload.Password = md5(password)
 
     let jsonPayload = JSON.stringify(payload) 
 
@@ -57,27 +57,27 @@ sendForm = () => {
 }
 
 validateForm = (newLog) => {
-    const { username, password } = newLog
+    const { Login, Password } = newLog
 
-    if (username == "") {
-        console.log("Username is blank")
+    if (Login == "") {
+        console.log("Login is blank")
         return false
     }
     let regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/
 
-    if (regex.test(username) == false) {
-        console.log("Username is not valid")
+    if (regex.test(Login) == false) {
+        console.log("Login is not valid")
         return false
     }
 
-    if (password == "") {
+    if (Password == "") {
         console.log("Password is blank")
         return false
     }
 
     regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/
 
-    if (regex.test(password) == false) {
+    if (regex.test(Password) == false) {
         console.log("Password is not valid")
         return false
     }
