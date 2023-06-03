@@ -1,4 +1,4 @@
-const baseURL = 'http://cop4331group10.xyz/LAMPAPI';
+const baseURL = 'http://http://146.190.67.167/LAMPAPI';
 
 sendForm = () => {
     let fname = document.getElementById("fname").value
@@ -11,7 +11,7 @@ sendForm = () => {
     console.log(username)
     console.log(password)
 
-    const payload = {
+    let payload = {
         firstName: fname,
         lastName: lname,
         login: username,
@@ -27,7 +27,7 @@ sendForm = () => {
 
     const jsonPaylod = JSON.stringify(payload)
 
-    const newRequest = new XMLHttpRequest();
+    let newRequest = new XMLHttpRequest();
 
     newRequest.open("POST", `${baseURL}/SignUp.php`);
 
