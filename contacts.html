@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/contacts.css">
 </head>
 
@@ -23,7 +24,7 @@
             </a>
 
             <button class="menuItem" onclick="logout()">
-                <p class="logout" >Logout</p><img src="./images/signout.svg" />
+                <p class="logout">Logout</p><img src="./images/signout.svg" />
             </button>
         </div>
 
@@ -32,7 +33,7 @@
             <div class="actionMenu">
                 <h1>Contacts</h1>
                 <div class="searchAction">
-                    <input placeholder="  Search..." />
+                    <input class="search" placeholder="  Search..." />
                     <button id="add" class="add">New +</button>
                 </div>
             </div>
@@ -85,8 +86,26 @@
         </div>
         <div id="myModal" class="modal">
             <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Some text in the Modal..</p>
+                <span class="close">&times;</span>
+                <h1>Create new Contact</h1>
+                <div id="addResult">Enter all the information</div>
+                <div class="modalFormItem">
+                    <label>First Name *</label>
+                    <input required id="contactFName" class="modalInput" placeholder="Enter contact's first name" type="text" />
+                </div>
+                <div class="modalFormItem">
+                    <label>Last Name *</label>
+                    <input required id="contactLName" class="modalInput" placeholder="Enter contact's last name" type="text" />
+                </div>
+                <div class="modalFormItem">
+                    <label>Email *</label>
+                    <input required id="contactEmail" class="modalInput" placeholder="Enter contact's email" type="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" />
+                </div>
+                <div class="modalFormItem">
+                    <label>Phone *</label>
+                    <input required id="contactNumber" class="modalInput" placeholder="Enter contact's phone number" type="text" pattern="^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$" />
+                </div>
+                <button type="button" class="modalButton">Create Contact</button>
             </div>
         </div>
 
@@ -95,4 +114,5 @@
 <script type="text/javascript" src="./js/cookies.js"></script>
 <script type="text/javascript" src="./js/contacts.js"></script>
 <script type="text/javascript" src="./js/modal.js"></script>
+
 </html>
