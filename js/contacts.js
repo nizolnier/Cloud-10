@@ -163,7 +163,7 @@ deleteContact = (num) => {
 }
 
 searchContacts = () => {
-    const query = document.getElementById("searchAction");
+    const query = document.getElementById("search");
     const options = query.value.toUpperCase().split(' '); 
     const contactsTable = document.getElementById("contactsTable"); 
     const contactsRow = contactsTable.getElementsByTageName("tr"); 
