@@ -13,6 +13,7 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
             readCookie()
+            showContacts
             MaskedInput({
                 elm: document.getElementById("contactNumber"), // select only by id
                 format: '(___) ___-____',
@@ -34,7 +35,6 @@
 
                 </div>
             </a>
-
             <button class="menuItem" onclick="logout()">
                 <p class="logout">Logout</p><img src="./images/signout.svg" />
             </button>
@@ -58,42 +58,7 @@
                     <th>Phone</th>
                     <th></th>
                 </tr>
-                <tr>
-                    <td>Nicole</td>
-                    <td>Nascimento</td>
-                    <td>ni@email.com</td>
-                    <td>4071111111</td>
-                    <td>
-                        <div class="tableAction">
-                            <img src="./images/edit.svg" />
-                            <img src="./images/trash.svg" />
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nicole</td>
-                    <td>Nascimento</td>
-                    <td>ni@email.com</td>
-                    <td>4071111111</td>
-                    <td>
-                        <div class="tableAction">
-                            <button class="actionIcon"><img src="./images/edit.svg" /></button>
-                            <button class="actionIcon"><img src="./images/trash.svg" /></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nicole</td>
-                    <td>Nascimento</td>
-                    <td>ni@email.com</td>
-                    <td>4071111111</td>
-                    <td>
-                        <div class="tableAction">
-                            <img src="./images/edit.svg" />
-                            <img src="./images/trash.svg" />
-                        </div>
-                    </td>
-                </tr>
+                
             </table>
         </div>
         <div id="myModal" class="modal">

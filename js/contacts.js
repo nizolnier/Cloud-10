@@ -12,7 +12,6 @@ logout = () => {
 }
 
 showContacts = () => {
-
     let payload = {
         search: "",
         userId: userId
@@ -35,7 +34,7 @@ showContacts = () => {
                     return;
                 }
 
-                let elem = "<table border='1'>"
+                let elem = "<tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th></th></tr>"
                 for(let i = 0; i < jsonObject.results.length; i++) {
                     ids[i] = jsonObject.results[i].ID;
                     elem += "<tr id='row" + i + "'>"
@@ -44,12 +43,11 @@ showContacts = () => {
                     elem += "<td id='email" + i + "'><span>" + jsonObject.results[i].EmailAddress + "</span></td>";
                     elem += "<td id='phone" + i + "'><span>" + jsonObject.results[i].PhoneNumber + "</span></td>";
                     elem += "<td>" + 
-                        "<button type='button' id='editBtn" + i + " onclick='editContact(" + i + ")'>" + "<img src='../images/edit.svg' alt='Edit Contact'>" + "</button>" +
-                        "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img src='../images/save.svg' alt='Save Changes'>" + "</button>" +
-                        "<button type='button' onclick='deleteContact(" + i + ")'>" + "<img src='../images/trash.svg' alt='Delete Contact'>" + "</button>" + "</td>";
+                        "<button type='button' id='editBtn" + i + " onclick='editContact(" + i + ")'>" + "<img src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
+                        "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img src='./images/save.svg' alt='Save Changes'>" + "</button>" +
+                        "<button type='button' onclick='deleteContact(" + i + ")'>" + "<img src='./images/trash.svg' alt='Delete Contact'>" + "</button>" + "</td>";
                 }
-                elem += "</table>"
-                document.getElementById("table_body").innerHTML = elem;
+                document.getElementById("contactsTable").innerHTML = elem;
             }
         }
         newRequest.send(jsonPayload);
@@ -189,6 +187,7 @@ searchContacts = () => {
             }
         }
     }
+}
 
 addContact = () => {
     let firstName = document.getElementById("contactFName").value;
@@ -212,7 +211,7 @@ addContact = () => {
         return
     }
 
-    const jsonPayload = JSON.stringify(tmp)
+    const jsonPayload = JSON.stringify(payload)
 
 
     let newRequest = new XMLHttpRequest()
@@ -272,7 +271,6 @@ validateForm = (newC) => {
         console.log("Email is not valid")
         return false
     }
-
 
     return true;
 }
