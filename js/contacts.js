@@ -190,6 +190,7 @@ searchContacts = () => {
 }
 
 addContact = () => {
+    let modal = document.getElementById("myModal");
     let firstName = document.getElementById("contactFName").value;
     let lastName = document.getElementById("contactLName").value;
     let phoneNumber = document.getElementById("contactNumber").value;
