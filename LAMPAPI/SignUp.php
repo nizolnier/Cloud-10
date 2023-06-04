@@ -2,14 +2,14 @@
 	ini_set('display_errors', 1);
 	error_reporting(E_ALL);
 
-	echo "Beginning of php script!\n";
+	// echo "Beginning of php script!\n";
 
 
 	$inData = getRequestInfo();
 
 
 
-	echo "Is this working?";
+	// echo "Is this working?";
 	# Don't know the exact reason this doesn't work.
 
 	
@@ -54,8 +54,9 @@
 			$stmt->close();
 			$conn->close();
 			http_response_code(200);
-			$searchResults .= '{'.'"id":"'.$id.''.'"}';
-			returnWithInfo($searchResults);
+			$searchResults[] = array('id' => $id, 'firstName' => $firstName, 'lastName' => $lastName);
+   			$json = json_encode($searchResults);
+			sendResultInfoAsJson($json);
 		} else {
 			http_response_code(409);
 			returnWithError("Username taken");
@@ -83,8 +84,5 @@
 		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-
-
-
 
 ?>
