@@ -35,11 +35,11 @@ readCookie = () => {
         }
     }
 
-    /* if (userId < 0) {
+    if (userId < 0) {
         window.location.href = "index.html"
     }
- */
-    //else {
+
+    else {
         document.getElementById("userName").innerHTML = "Welcome, " + firstName + " " + lastName + "!"
-    //}
+    }
 }
