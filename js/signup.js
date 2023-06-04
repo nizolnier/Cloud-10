@@ -1,4 +1,4 @@
-const baseURL = 'http://146.190.67.167/LAMPAPI';
+const baseURL = 'http://cop4331group10.xyz/LAMPAPI';
 
 sendForm = () => {
     let fname = document.getElementById("fname").value
