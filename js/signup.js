@@ -56,8 +56,8 @@ sendForm = () => {
             if (newRequest.status == 200) {
                 console.log("Sucess!");
                 // let jsonObject = JSON.parse(newRequest.responseText);
-                // document.getElesentById("signupResult").innerHTML = "User added, redirecting to log in";
-                // window.location.href = "login.html";
+                document.getElesentById("signupResult").innerHTML = "User added, redirecting to log in";
+                window.location.href = "login.html";
             }
 
             else {
