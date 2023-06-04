@@ -32,12 +32,13 @@
 		}
 		else
 		{
-			$stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName=?, PhoneNumber= ?, EmailAddress= ? WHERE ID= ?");
+			$stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName=?, PhoneNumber= ?, EmailAddress= ? WHERE UserID= ?");
 			$stmt->bind_param("ssssi", $newFirst, $newLast, $phoneNumber, $emailAddress, $id);
 			$stmt->execute();
 
 			$stmt->close();
 			$conn->close();
+			http_response_code(200);
 			returnWithError("");
 		}
 

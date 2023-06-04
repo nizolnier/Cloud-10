@@ -125,7 +125,7 @@ saveContact = (num) => {
 deleteContact = (num) => {
     var firstVal = document.getElementById("firstName" + num).innerText;
     var lastVal = document.getElementById("lastName" + num).innerText;
-    var userId = ids[num]
+    // var userId = ids[num]
     nameFirst = firstVal.substring(0, firstVal.length);
     nameLast = lastVal.substring(0, lastVal.length);
 
@@ -144,7 +144,7 @@ deleteContact = (num) => {
 
         let newRequest = new XMLHttpRequest;
         newRequest.open("POST", url, true);
-        newRequest.etRequestHeader("Content-type", "application/json; charset=UTF-8");
+        newRequest.setRequestHeader("Content-type", "application/json; charset=UTF-8");
         try {
             newRequest.onreadystatechange = () => {
                 if(newRequest.readyState == 4 && newRequest.status == 200) {
@@ -166,22 +166,22 @@ searchContacts = () => {
     const query = document.getElementById("search");
     const options = query.value.toUpperCase().split(' '); 
     const contactsTable = document.getElementById("contactsTable"); 
-    const contactsRow = contactsTable.getElementsByTageName("tr"); 
+    const contactsRow = contactsTable.getElementsByTagName("tr"); 
 
     for(let i = 0; i < contactsRow.length; i++) {
-        const tdFirstName = contactsRow[i].getElementsByTageName("td")[0];
+        const tdFirstName = contactsRow[i].getElementsByTagName("td")[0];
         const tdLastName = contactsRow[i].getElementsByTagName("td")[1];
 
         if(tdFirstName && tdLastName) {
             const firstNameTextVal = tdFirstName.textContent || tdFirstName.innerText;
             const lastNameTextVal = tdLastName.textContent || tdLastName.innerText;
-            contactsRow.style.display = "none";
+            contactsRow[i].style.display = "none";
 
             for(option of options) {
                 if(firstNameTextVal.toUpperCase().indexOf(option) > -1) {
                     contactsRow[i].style.display = "";
                 }
-                if(lastNameTextVal.toUpperCase().indexOf(selection) > -1) {
+                if(lastNameTextVal.toUpperCase().indexOf(option) > -1) {
                     contactsRow[i].style.display= "";
                 }
             }
