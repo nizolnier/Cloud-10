@@ -1,12 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
+    <link rel="stylesheet" type="text/css" href="./css/contacts.css">
 </head>
+
 <body>
-    <div>hello this is the contacts page</div>
+    <main>
+        <div class="sidebar">
+
+            <a href="./contacts.html" class="menu">
+                <img class="logo" src="./images/cloud-10.svg" />
+                <div class="menuItem">
+                    <img src="./images/home.svg">
+                    <p>Home</p>
+
+                </div>
+            </a>
+
+            <button class="menuItem" onclick="logout()">
+                <p class="logout" >Logout</p><img src="./images/signout.svg" />
+            </button>
+        </div>
+
+        <div class="mainContainer">
+            <div class="header">Welcome!</div>
+            <div class="actionMenu">
+                <h1>Contacts</h1>
+                <div class="searchAction">
+                    <input placeholder="  Search..." />
+                    <button id="add" class="add">New +</button>
+                </div>
+            </div>
+            <hr class="new">
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Nicole</td>
+                    <td>Nascimento</td>
+                    <td>ni@email.com</td>
+                    <td>4071111111</td>
+                    <td>
+                        <div class="tableAction">
+                            <img src="./images/edit.svg" />
+                            <img src="./images/trash.svg" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nicole</td>
+                    <td>Nascimento</td>
+                    <td>ni@email.com</td>
+                    <td>4071111111</td>
+                    <td>
+                        <div class="tableAction">
+                            <button class="actionIcon"><img src="./images/edit.svg" /></button>
+                            <button class="actionIcon"><img src="./images/trash.svg" /></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nicole</td>
+                    <td>Nascimento</td>
+                    <td>ni@email.com</td>
+                    <td>4071111111</td>
+                    <td>
+                        <div class="tableAction">
+                            <img src="./images/edit.svg" />
+                            <img src="./images/trash.svg" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Some text in the Modal..</p>
+            </div>
+        </div>
+
+    </main>
 </body>
+<script type="text/javascript" src="./js/cookies.js"></script>
+<script type="text/javascript" src="./js/contacts.js"></script>
+<script type="text/javascript" src="./js/modal.js"></script>
 </html>

@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+
+main {
+    display: flex;
+    height: 100vh;
+}
+
+.logo {
+    width: 90%;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar {
+    background: #DDC1E4;
+    width: 18%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 4em;
+    padding-bottom: 2em;
+    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menuItem {
+    padding: 1em;
+    display: flex;
+    width: 110px;
+    justify-content: space-around;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.header {
+    background: #FFFFFF;
+    padding: 1em;
+    padding-left: 1.5em;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.mainContainer {
+    background: #F8F8F8;
+    width: 82%;
+
+}
+
+.actionMenu {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+}
+
+h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+}
+
+.searchAction {
+    height: 35px;
+    display: flex;
+    width: 340px;
+    justify-content: space-between;
+}
+
+input {
+    background: #F8F8F8;
+    border: 1.5px solid #000000;
+    border-radius: 8px;
+    width: 212px;
+}
+
+button {
+    border: none;
+    background: #F8F8F8;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+button.menuItem {
+    border: none;
+    background: #DDC1E4;
+    padding: 1em;
+    display: flex;
+    width: 125px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+button.add {
+    background: #A700D0;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    width: 95px;
+}
+
+hr.new {
+    border-top: 1px solid #E5E5E5;
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2em;
+}
+
+table {
+    width: 95%;
+    padding: 2em 2em;
+    border-collapse: collapse;
+    margin-left: 2em;
+}
+
+
+th {
+    color: #ACACAC;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: left;
+    padding: 2em 1em;
+}
+
+tr,
+td {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    padding: 2em 1em;
+    margin: 0;
+}
+
+
+tr:nth-child(even) {
+    background: white;
+}
+
+
+.tableAction {
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
