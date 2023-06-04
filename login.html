@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <script type="text/javascript" src="./js/md5.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
+
 <body>
     <div class="gradient">
         <form>
@@ -16,11 +18,13 @@
             <div id="loginResult">Enter your credentials to access your account</div>
             <div class="formItem">
                 <label for="username">Username *</label>
-                <input required type="text" id="username" name="username" placeholder="Enter your username" pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$">
+                <input required type="text" id="username" name="username" placeholder="Enter your username"
+                    pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$">
             </div>
             <div class="formItem">
                 <label for="password">Password *</label>
-                <input required type="password" id="password" name="password" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}">
+                <input required type="password" id="password" name="password" placeholder="Enter your password"
+                    pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}">
                 <div id="togglePassword"></div>
             </div>
             <div class="formItem">
@@ -39,4 +43,5 @@
 <script type="text/javascript" src="./js/cookies.js"></script>
 <script type="text/javascript" src="./js/login.js"></script>
 <script type="text/javascript" src="./js/togglePassword.js"></script>
+
 </html>
