@@ -6,18 +6,23 @@
 
     # $inData = getRequestInfo();
 
-	# $phoneNumber = $inData["phoneNumber"];
-	# $emailAddress = $inData["emailAddress"];
-	# $newFirst = $inData["newFirstName"];
-	# $newLast = $inData["newLastName"];
-	# $id = $inData["id"];
+	$phoneNumber = $inData["phoneNumber"];
+	$emailAddress = $inData["emailAddress"];
+	$newFirst = $inData["newFirstName"];
+	$newLast = $inData["newLastName"];
+	$id = $inData["id"];
 
-    $phoneNumber = $_POST['phoneNumber'];
-	$emailAddress = $_POST['emailAddress'];
-	$newFirst = $_POST['newFirstName'];
-	$newLast = $_POST['newLastName'];
-    $id = $_POST['id'];
+	# This is best for local curls
+    # $phoneNumber = $_POST['phoneNumber'];
+	# $emailAddress = $_POST['emailAddress'];
+	# $newFirst = $_POST['newFirstName'];
+	# newLast = $_POST['newLastName'];
+    # $id = $_POST['id'];
 
+	header('Access-Control-Allow-Origin: *');
+	header("Content-Type: application/json");
+	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+	header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
     # You can change this for your local DB if needed.
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");

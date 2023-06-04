@@ -13,14 +13,10 @@
 	# Don't know the exact reason this doesn't work.
 
 	
-
-	header('Access-Control-Allow-Origin: http://146.190.67.167');
-	header('Access-Control-Allow-Origin: http://146.190.67.167/LAMPAPI/SignUp.php');
-	header("Content-Type: application/json");
 	header('Access-Control-Allow-Origin: *');
+	header("Content-Type: application/json");
 	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 	header('Access-Control-Allow-Headers: Content-Type, Authorization');
-
 
 
 	$firstName = $inData["firstName"];

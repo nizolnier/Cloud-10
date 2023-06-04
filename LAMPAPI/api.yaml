@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   title: Contact Manager API
   version: 1.0.0
-host: 146.190.67.167
+host: cop4331group10.xyz
 basePath: /LAMPAPI
 schemes:
   - http

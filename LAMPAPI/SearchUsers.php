@@ -5,6 +5,11 @@
 	$searchResults = "";
 	$searchCount = 0;
 
+	header('Access-Control-Allow-Origin: *');
+	header("Content-Type: application/json");
+	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+	header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
 
     # You can change this for your local DB if needed.
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
