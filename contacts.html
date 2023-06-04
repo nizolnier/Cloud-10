@@ -6,13 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/contacts.css">
+    <script type="text/javascript" src="./js/cookies.js"></script>
+    <script type="text/javascript" src="./js/mask.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            readCookie()
+            MaskedInput({
+                elm: document.getElementById("contactNumber"), // select only by id
+                format: '(___) ___-____',
+                separator: '(   )-'
+            });
+        }, false)
+
+    </script>
 </head>
 
 <body>
     <main>
         <div class="sidebar">
-
             <a href="./contacts.html" class="menu">
                 <img class="logo" src="./images/cloud-10.svg" />
                 <div class="menuItem">
@@ -23,16 +36,16 @@
             </a>
 
             <button class="menuItem" onclick="logout()">
-                <p class="logout" >Logout</p><img src="./images/signout.svg" />
+                <p class="logout">Logout</p><img src="./images/signout.svg" />
             </button>
         </div>
 
         <div class="mainContainer">
-            <div class="header">Welcome!</div>
+            <div id="userName" class="header">Welcome!</div>
             <div class="actionMenu">
                 <h1>Contacts</h1>
                 <div class="searchAction">
-                    <input placeholder="  Search..." />
+                    <input class="search" placeholder="  Search..." />
                     <button id="add" class="add">New +</button>
                 </div>
             </div>
@@ -85,14 +98,36 @@
         </div>
         <div id="myModal" class="modal">
             <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Some text in the Modal..</p>
+                <span class="close">&times;</span>
+                <h1>Create new Contact</h1>
+                <div id="addResult">Enter all the information</div>
+                <div class="modalFormItem">
+                    <label>First Name *</label>
+                    <input required id="contactFName" class="modalInput" placeholder="Enter contact's first name"
+                        type="text" />
+                </div>
+                <div class="modalFormItem">
+                    <label>Last Name *</label>
+                    <input required id="contactLName" class="modalInput" placeholder="Enter contact's last name"
+                        type="text" />
+                </div>
+                <div class="modalFormItem">
+                    <label>Email *</label>
+                    <input required id="contactEmail" class="modalInput" placeholder="Enter contact's email"
+                        type="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+                </div>
+                <div class="modalFormItem">
+                    <label>Phone *</label>
+                    <input required id="contactNumber" class="modalInput" placeholder="Enter contact's phone number"
+                        type="text" pattern="^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$" />
+                </div>
+                <button id="addButton" onclick="addContact()" type="button" class="modalButton">Create Contact</button>
             </div>
         </div>
 
     </main>
 </body>
-<script type="text/javascript" src="./js/cookies.js"></script>
 <script type="text/javascript" src="./js/contacts.js"></script>
 <script type="text/javascript" src="./js/modal.js"></script>
+
 </html>
