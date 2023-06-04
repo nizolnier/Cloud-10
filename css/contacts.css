@@ -88,7 +88,7 @@ h1 {
     justify-content: space-between;
 }
 
-input {
+.search {
     background: #F8F8F8;
     border: 1.5px solid #000000;
     border-radius: 8px;
@@ -203,17 +203,26 @@ tr:nth-child(even) {
 .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    padding-top: 0;
+    padding: 2em;
     border: 1px solid #888;
-    width: 80%;
+    width: 30%;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 70%;
 }
 
 /* The Close Button */
 .close {
     color: #aaaaaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
+    display: flex;
+    align-self: flex-end;
 }
 
 .close:hover,
@@ -221,4 +230,51 @@ tr:nth-child(even) {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+#addResult {
+    color: #6C6C6C;
+}
+
+.modalInput {
+    box-sizing: border-box;
+    width: 26em;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    padding-left: 0.5em;
+}
+
+.modalFormItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.modalButton {
+        width: 26em;
+        height: 44px;
+        background: #A700D0;
+        border-radius: 4px;
+        border: none;
+        color: white;
+        transition: background 0.35s;
+}
+
+.modalButton:hover {
+    background: #6d0387;
+    cursor: pointer;
+}
+
+label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #6C6C6C;
+    display: flex;
+    align-self: flex-start;
+    padding-bottom: 0.5em;
 }

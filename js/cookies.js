@@ -1,5 +1,11 @@
+let userId = -1;
+let firstName = "";
+let lastName = "";
+
 saveCookie = (user) => {
-    const { firstName, lastName, userId } = user
+    userId = user.userId;
+    firstName = user.firstName;
+    lastName = user.lastName;
     let minutes = 20
     let date = new Date()
     date.setTime(date.getTime() + (minutes * 60 * 1000))
@@ -29,21 +35,11 @@ readCookie = () => {
         }
     }
 
-    if (userId < 0) {
+    /* if (userId < 0) {
         window.location.href = "index.html"
     }
-
-    else {
+ */
+    //else {
         document.getElementById("userName").innerHTML = "Welcome, " + firstName + " " + lastName + "!"
-    }
-}
-
-
-logout = () => {
-    userId = 0
-    firstName = ""
-    lastName = ""
-
-    document.cookie = "firstName=   expires = Thu, 01 Jan 1970 00:00:00 GMT"
-    window.location.href = "index.html"
+    //}
 }
