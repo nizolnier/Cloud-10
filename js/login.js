@@ -51,7 +51,7 @@ sendForm = () => {
                 const foundUser = { firstName, lastName, userId };
                 console.log("Working?");
                 saveCookie(foundUser);
-                window.location.href = "contacts.html";
+                // window.location.href = "contacts.html";
             }
         }
 

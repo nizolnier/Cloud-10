@@ -239,7 +239,7 @@ tr:nth-child(even) {
 
 .modalInput {
     box-sizing: border-box;
-    width: 415px;
+    width: 26em;
     height: 44px;
     background: #FFFFFF;
     border: 1px solid #E5E5E5;
@@ -253,7 +253,7 @@ tr:nth-child(even) {
 }
 
 .modalButton {
-        width: 415px;
+        width: 26em;
         height: 44px;
         background: #A700D0;
         border-radius: 4px;

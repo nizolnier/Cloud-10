@@ -8,12 +8,24 @@
     <title>Contacts</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/contacts.css">
+    <script type="text/javascript" src="./js/cookies.js"></script>
+    <script type="text/javascript" src="./js/mask.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            readCookie()
+            MaskedInput({
+                elm: document.getElementById("contactNumber"), // select only by id
+                format: '(___) ___-____',
+                separator: '(   )-'
+            });
+        }, false)
+
+    </script>
 </head>
 
 <body>
     <main>
         <div class="sidebar">
-
             <a href="./contacts.html" class="menu">
                 <img class="logo" src="./images/cloud-10.svg" />
                 <div class="menuItem">
@@ -29,7 +41,7 @@
         </div>
 
         <div class="mainContainer">
-            <div class="header">Welcome!</div>
+            <div id="userName" class="header">Welcome!</div>
             <div class="actionMenu">
                 <h1>Contacts</h1>
                 <div class="searchAction">
@@ -91,27 +103,30 @@
                 <div id="addResult">Enter all the information</div>
                 <div class="modalFormItem">
                     <label>First Name *</label>
-                    <input required id="contactFName" class="modalInput" placeholder="Enter contact's first name" type="text" />
+                    <input required id="contactFName" class="modalInput" placeholder="Enter contact's first name"
+                        type="text" />
                 </div>
                 <div class="modalFormItem">
                     <label>Last Name *</label>
-                    <input required id="contactLName" class="modalInput" placeholder="Enter contact's last name" type="text" />
+                    <input required id="contactLName" class="modalInput" placeholder="Enter contact's last name"
+                        type="text" />
                 </div>
                 <div class="modalFormItem">
                     <label>Email *</label>
-                    <input required id="contactEmail" class="modalInput" placeholder="Enter contact's email" type="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" />
+                    <input required id="contactEmail" class="modalInput" placeholder="Enter contact's email"
+                        type="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
                 </div>
                 <div class="modalFormItem">
                     <label>Phone *</label>
-                    <input required id="contactNumber" class="modalInput" placeholder="Enter contact's phone number" type="text" pattern="^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$" />
+                    <input required id="contactNumber" class="modalInput" placeholder="Enter contact's phone number"
+                        type="text" pattern="^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$" />
                 </div>
-                <button type="button" class="modalButton">Create Contact</button>
+                <button id="addButton" onclick="addContact()" type="button" class="modalButton">Create Contact</button>
             </div>
         </div>
 
     </main>
 </body>
-<script type="text/javascript" src="./js/cookies.js"></script>
 <script type="text/javascript" src="./js/contacts.js"></script>
 <script type="text/javascript" src="./js/modal.js"></script>
 
