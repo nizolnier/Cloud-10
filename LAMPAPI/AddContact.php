@@ -8,6 +8,9 @@
 	$userId = $inData["userId"];
 
 
+
+	header('Access-Control-Allow-Origin: http://cop4331group10.xyz');
+	header('Access-Control-Allow-Origin: http://cop4331group10.xyz/LAMPAPI/AddContact.php');
 	header('Access-Control-Allow-Origin: *');
 	header("Content-Type: application/json");
 	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
@@ -28,12 +31,14 @@
 	else
 	{
 		$stmt = $conn->prepare("INSERT into Contacts (Phone, Email, UserID, FirstName, LastName) VALUES(?,?,?,?,?)");
-		$stmt->bind_param("ssiss", $phoneNumber, $emailAddress, $id, $newFirst, $newLast);
+		$stmt->bind_param("ssiss", $phoneNumber, $emailAddress, $userId, $firstName, $lastName);
+		$id = $conn->insert_id;
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
 		http_response_code(200);
-		sendResultInfoAsJson();
+		$searchResults[] = array('id' => $id, 'firstName' => $firstName, 'lastName' => $lastName);
+		sendResultInfoAsJson($searchResults);
 		// echo ("Succesful");
 	}
 

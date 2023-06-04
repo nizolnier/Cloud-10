@@ -64,7 +64,7 @@ p {
     background: #A700D0;
     border-radius: 4px;
     text-align: center;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 
 }

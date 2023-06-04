@@ -14,7 +14,7 @@ logout = () => {
 showContacts = () => {
     let payload = {
         search: "",
-        userId: userId
+        UserID: userId
     }
 
     let jsonPayload = JSON.stringify(payload);
@@ -26,7 +26,7 @@ showContacts = () => {
 
     try{
         newRequest.onreadystatechange = () => {
-            if(newRequest.readyState == 4 && newRequeststatus == 200) {
+            if(newRequest.readyState == 4 && newRequest.status == 200) {
                 let jsonObject = JSON.parse(newRequest.responseText);
 
                 if(jsonObject.error) {
@@ -40,8 +40,8 @@ showContacts = () => {
                     elem += "<tr id='row" + i + "'>"
                     elem += "<td id='firstName" + i + "'><span>" + jsonObject.results[i].FirstName + "</span></td>";
                     elem += "<td id='lastName" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
-                    elem += "<td id='email" + i + "'><span>" + jsonObject.results[i].EmailAddress + "</span></td>";
-                    elem += "<td id='phone" + i + "'><span>" + jsonObject.results[i].PhoneNumber + "</span></td>";
+                    elem += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
+                    elem += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
                     elem += "<td>" + 
                         "<button type='button' id='editBtn" + i + " onclick='editContact(" + i + ")'>" + "<img src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
                         "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img src='./images/save.svg' alt='Save Changes'>" + "</button>" +
@@ -84,12 +84,12 @@ saveContact = (num) => {
     var lastVal = document.getElementById("lastTxt" + num).value;
     var emailVal = document.getElementById("emailTxt" + num).value;
     var phoneVal = document.getElementById("phoneTxt" + num).value;
-    var idVal = ids[num]
+    var idVal = ids[num];
 
-    document.getElementById("firstName" + no).innerHTML = firstVal;
-    document.getElementById("lastName" + no).innerHTML = lastVal;
-    document.getElementById("email" + no).innerHTML = emailVal;
-    document.getElementById("phone" + no).innerHTML = phoneVal;
+    document.getElementById("firstName" + num).innerHTML = firstVal;
+    document.getElementById("lastName" + num).innerHTML = lastVal;
+    document.getElementById("email" + num).innerHTML = emailVal;
+    document.getElementById("phone" + num).innerHTML = phoneVal;
 
     document.getElementById("editBtn" + num).style.display = "inline-block";
     document.getElementById("saveBtn" + num).style.display = "none";
@@ -201,11 +201,11 @@ addContact = () => {
         lastName: lastName,
         phoneNumber: phoneNumber,
         emailAddress: emailAddress,
-        userId
+        userId: userId
     }
 
     console.log(payload)
-
+    console.log(payload.userId)
     if (!validateForm(payload)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED")
         return
@@ -220,13 +220,13 @@ addContact = () => {
     try {
         newRequest.send(jsonPayload)
         newRequest.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+            if (newRequest.readyState == 4 && newRequest.status == 200) {
                 document.getElementById("addResult").innerHTML = "Contact has been added"
                 // clear input fields in form 
                 document.getElementById("addMe").reset()
                 // reload contacts table and switch view to show
                 modal.style.display = "none"
-                loadContacts()
+                showContacts()
             }
         };
         
