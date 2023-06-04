@@ -1,5 +1,4 @@
 const baseURL = 'http://cop4331group10.xyz/LAMPAPI';
-<<<<<<< HEAD
 const extension = 'php';
 const ids = []
 
@@ -190,19 +189,6 @@ searchContacts = () => {
             }
         }
     }
-=======
-
-logout = () => {
-    userId = 0
-    firstName = ""
-    lastName = ""
-
-    document.cookie = "firstName=   expires = Thu, 01 Jan 1970 00:00:00 GMT"
-    window.location.href = "index.html"
-}
-loadContacts = () => {
-
-}
 
 addContact = () => {
     let firstName = document.getElementById("contactFName").value;
@@ -289,5 +275,4 @@ validateForm = (newC) => {
 
 
     return true;
->>>>>>> 36b2283b419115cee33ea02b17c4cf2735198aa3
 }

@@ -5,6 +5,8 @@
 	$searchResults = "";
 	$searchCount = 0;
 
+	// header('Access-Control-Allow-Origin: http://cop4331group10.xyz');
+	// header('Access-Control-Allow-Origin: http://cop4331group10.xyz/LAMPAPI/SearchContacts.php');
 	header('Access-Control-Allow-Origin: *');
 	header("Content-Type: application/json");
 	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
@@ -19,9 +21,9 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select Name from Contacts where (FirstName like ? OR LastName like ?)and UserID=?");
-		$colorName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("sss", $colorName, $colorName, $inData["userId"]);
+		$stmt = $conn->prepare("select FirstName, LastName, Phone, Email from Contacts where (FirstName like ? OR LastName like ? OR Phone like ? OR Email like ?)  and UserID=?");
+		$contactName = "%" . $inData["search"] . "%";
+		$stmt->bind_param("ssssi", $contactName, $contactName, $contactName, $contactName, $inData["UserID"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();

@@ -33,7 +33,8 @@
 		$stmt->close();
 		$conn->close();
 		http_response_code(200);
-		echo ("Succesful");
+		sendResultInfoAsJson();
+		// echo ("Succesful");
 	}
 
 	function getRequestInfo()
