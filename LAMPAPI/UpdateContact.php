@@ -1,16 +1,19 @@
 <?php
 
-	
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
 
     # Doesn't work (when testing locally at least) for some reason.
 
-    # $inData = getRequestInfo();
+    $inData = getRequestInfo();
 
 	$phoneNumber = $inData["phoneNumber"];
 	$emailAddress = $inData["emailAddress"];
 	$newFirst = $inData["newFirstName"];
 	$newLast = $inData["newLastName"];
-	$id = $inData["id"];
+	$id = $inData["contactID"];
 
 	# This is best for local curls
     # $phoneNumber = $_POST['phoneNumber'];
@@ -32,10 +35,9 @@
 		}
 		else
 		{
-			$stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName=?, PhoneNumber= ?, EmailAddress= ? WHERE UserID= ?");
+			$stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName=?, Phone= ?, Email= ? WHERE ID= ?");
 			$stmt->bind_param("ssssi", $newFirst, $newLast, $phoneNumber, $emailAddress, $id);
 			$stmt->execute();
-
 			$stmt->close();
 			$conn->close();
 			http_response_code(200);
@@ -56,10 +58,13 @@
 	}
 
 	function returnWithError( $err )
-	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
-	}
+{
+    if ($err !== "") {
+        http_response_code(500);
+    }
+    $retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+    sendResultInfoAsJson( $retValue );
+}
 
 
 ?>

@@ -37,13 +37,14 @@ showContacts = () => {
                 let elem = "<tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th></th></tr>"
                 for(let i = 0; i < jsonObject.results.length; i++) {
                     ids[i] = jsonObject.results[i].ID;
+                    console.log("ids[i]: " + ids[i]);
                     elem += "<tr id='row" + i + "'>"
                     elem += "<td id='firstName" + i + "'><span>" + jsonObject.results[i].FirstName + "</span></td>";
                     elem += "<td id='lastName" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
                     elem += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
                     elem += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
                     elem += "<td>" + 
-                        "<button type='button' id='editBtn" + i + " onclick='editContact(" + i + ")'>" + "<img src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
+                        "<button type='button' id='editBtn" + i + "' onclick='editContact(" + i + ")'>" + "<img src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
                         "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img src='./images/save.svg' alt='Save Changes'>" + "</button>" +
                         "<button type='button' onclick='deleteContact(" + i + ")'>" + "<img src='./images/trash.svg' alt='Delete Contact'>" + "</button>" + "</td>";
                 }
@@ -67,10 +68,10 @@ editContact = (id) => {
     var email = document.getElementById("email" + id);
     var phone = document.getElementById("phone" + id);
 
-    var firstText = first.innerHTML;
-    var lastText = last.innerHTML;
-    var emailText = email.innerHTML;
-    var phoneText = phone.innerHTML;
+    var firstText = first.innerText;
+    var lastText = last.innerText;
+    var emailText = email.innerText;
+    var phoneText = phone.innerText;
 
     first.innerHTML = "<input type='text' id='firstTxt" + id + "' value='" + firstText + "'>";
     last.innerHTML = "<input type='text' id='lastTxt" + id + "' value='" + lastText + "'>";
@@ -85,7 +86,7 @@ saveContact = (num) => {
     var emailVal = document.getElementById("emailTxt" + num).value;
     var phoneVal = document.getElementById("phoneTxt" + num).value;
     var idVal = ids[num];
-
+    console.log('HELLO THIS IS ID: ' + ids[num]); 
     document.getElementById("firstName" + num).innerHTML = firstVal;
     document.getElementById("lastName" + num).innerHTML = lastVal;
     document.getElementById("email" + num).innerHTML = emailVal;
@@ -93,17 +94,17 @@ saveContact = (num) => {
 
     document.getElementById("editBtn" + num).style.display = "inline-block";
     document.getElementById("saveBtn" + num).style.display = "none";
-
+    console.log(idVal);
     let payload = {
-        Phone: phoneVal,
-        Email: emailVal,
-        UserID: idVal,
-        FirstName: firstVal,
-        LastName: lastVal
+        phoneNumber: phoneVal,
+        emailAddress: emailVal,
+        newFirstName: firstVal,
+        newLastName: lastVal,
+        contactID: idVal
     }
 
-    let jsonPayload = json.stringify(payload);
-    let url = baseURL + 'UpdateContacts.' + extension;
+    let jsonPayload = JSON.stringify(payload);
+    let url = baseURL + '/UpdateContact.' + extension;
 
     let newRequest = new XMLHttpRequest;
     newRequest.open("POST", url, true);

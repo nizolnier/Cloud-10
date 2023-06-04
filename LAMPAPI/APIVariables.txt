@@ -1,0 +1,11 @@
+
+SQL TABLE
+Contacts
+-------
+Use
+
+
+ADDContact.php
+firstName
+lastName
+phoneNumber

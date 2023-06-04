@@ -5,8 +5,7 @@
 	$searchResults = "";
 	$searchCount = 0;
 
-	// header('Access-Control-Allow-Origin: http://cop4331group10.xyz');
-	// header('Access-Control-Allow-Origin: http://cop4331group10.xyz/LAMPAPI/SearchContacts.php');
+	
 	header('Access-Control-Allow-Origin: *');
 	header("Content-Type: application/json");
 	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
@@ -21,7 +20,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select FirstName, LastName, Phone, Email from Contacts where (FirstName like ? OR LastName like ? OR Phone like ? OR Email like ?)  and UserID=?");
+		$stmt = $conn->prepare("select FirstName, LastName, Phone, Email, ID from Contacts where (FirstName like ? OR LastName like ? OR Phone like ? OR Email like ?)  and UserID=?");
 		$contactName = "%" . $inData["search"] . "%";
 		$stmt->bind_param("ssssi", $contactName, $contactName, $contactName, $contactName, $inData["UserID"]);
 		$stmt->execute();
@@ -35,7 +34,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-            $searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '"}';
+            $searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '", "ID" : "' . $row["ID"]. '"}';
 		}
 		
 		if( $searchCount == 0 )
