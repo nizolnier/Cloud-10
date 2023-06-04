@@ -11,7 +11,6 @@
     <script type="text/javascript" src="./js/cookies.js"></script>
     <script type="text/javascript" src="./js/mask.js"></script>
     <script type="text/javascript" src="./js/contacts.js"></script>
-    <script type="text/javascript" src="./js/modal.js"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
             readCookie()
@@ -64,36 +63,36 @@
             </table>
         </div>
         <div id="myModal" class="modal">
-            <div class="modal-content">
+            <form id="addMe" class="modal-content">
                 <span class="close">&times;</span>
                 <h1>Create new Contact</h1>
                 <div id="addResult">Enter all the information</div>
-                <div class="modalFormItem">
-                    <label>First Name *</label>
-                    <input required id="contactFName" class="modalInput" placeholder="Enter contact's first name"
-                        type="text" />
-                </div>
-                <div class="modalFormItem">
-                    <label>Last Name *</label>
-                    <input required id="contactLName" class="modalInput" placeholder="Enter contact's last name"
-                        type="text" />
-                </div>
-                <div class="modalFormItem">
-                    <label>Email *</label>
-                    <input required id="contactEmail" class="modalInput" placeholder="Enter contact's email"
-                        type="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
-                </div>
-                <div class="modalFormItem">
-                    <label>Phone *</label>
-                    <input required id="contactNumber" class="modalInput" placeholder="Enter contact's phone number"
-                        type="text" pattern="^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$" />
-                </div>
-                <button id="addButton" onclick="addContact()" type="button" class="modalButton">Create Contact</button>
-            </div>
+                    <div class="modalFormItem">
+                        <label>First Name *</label>
+                        <input required id="contactFName" class="modalInput" placeholder="Enter contact's first name"
+                            type="text" />
+                    </div>
+                    <div class="modalFormItem">
+                        <label>Last Name *</label>
+                        <input required id="contactLName" class="modalInput" placeholder="Enter contact's last name"
+                            type="text" />
+                    </div>
+                    <div class="modalFormItem">
+                        <label>Email *</label>
+                        <input required id="contactEmail" class="modalInput" placeholder="Enter contact's email"
+                            type="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+                    </div>
+                    <div class="modalFormItem">
+                        <label>Phone *</label>
+                        <input required id="contactNumber" class="modalInput" placeholder="Enter contact's phone number"
+                            type="text" pattern="^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$" />
+                    </div>
+                    <button id="addButton" onclick="addContact()" type="button" class="modalButton">Create Contact</button>
+            </form>
         </div>
 
     </main>
 </body>
-
-
+<script type="text/javascript" src="./js/contacts.js"></script>
+<script type="text/javascript" src="./js/modal.js"></script>
 </html>
