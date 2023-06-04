@@ -1,17 +1,15 @@
 <?php
 
-
-	# Doesn't work (when testing locally at least) for some reason.
 	
-	#$inData = getRequestInfo();
+	$inData = getRequestInfo();
 
-    # $userId = inData["UserID"];
-    # $firstName = inData["FirstName"];
-    # $lastName = inData["LastName"];
+    $userId = $inData["UserID"];
+    $firstName = $inData["FirstName"];
+    $lastName = $inData["LastName"];
 
-	$userId = $_POST['UserID'];
-	$firstName = $_POST['firstName'];
-	$lastName = $_POST['lastName'];
+	# $userId = $_POST['UserID'];
+	# $firstName = $_POST['firstName'];
+	# $lastName = $_POST['lastName'];
 	
 
 	header('Access-Control-Allow-Origin: *');
