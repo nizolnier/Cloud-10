@@ -19,6 +19,7 @@
     height: 180px;
 }
 
+
 .clouds {
     width: 100vw;
     object-fit: cover;
@@ -33,6 +34,7 @@ h1 {
     color: white;
     padding: 0.6em;
 }
+
 
 a {
     text-decoration: none;
