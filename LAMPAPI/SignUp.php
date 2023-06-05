@@ -21,7 +21,7 @@
 
 	$firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
-    $login = $inData["login"];
+    $username = $inData["username"];
     $password = $inData["password"];
 	
 	#$firstName = $_POST['firstName'];

@@ -14,7 +14,7 @@ logout = () => {
 showContacts = () => {
     let payload = {
         search: "",
-        UserID: userId
+        userID: userId
     }
 
     let jsonPayload = JSON.stringify(payload);
@@ -36,13 +36,13 @@ showContacts = () => {
 
                 let elem = "<tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th></th></tr>"
                 for(let i = 0; i < jsonObject.results.length; i++) {
-                    ids[i] = jsonObject.results[i].ID;
+                    ids[i] = jsonObject.results[i].contactID;
                     console.log("ids[i]: " + ids[i]);
                     elem += "<tr id='row" + i + "'>"
-                    elem += "<td id='firstName" + i + "'><span>" + jsonObject.results[i].FirstName + "</span></td>";
-                    elem += "<td id='lastName" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
-                    elem += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
-                    elem += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
+                    elem += "<td id='firstName" + i + "'><span>" + jsonObject.results[i].contactFirstName + "</span></td>";
+                    elem += "<td id='lastName" + i + "'><span>" + jsonObject.results[i].contactLastName + "</span></td>";
+                    elem += "<td id='email" + i + "'><span>" + jsonObject.results[i].contactEmail + "</span></td>";
+                    elem += "<td id='phone" + i + "'><span>" + jsonObject.results[i].contactPhone + "</span></td>";
                     elem += "<td>" + 
                         "<button type='button' id='editBtn" + i + "' onclick='editContact(" + i + ")'>" + "<img src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
                         "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img src='./images/save.svg' alt='Save Changes'>" + "</button>" +
@@ -96,10 +96,10 @@ saveContact = (num) => {
     document.getElementById("saveBtn" + num).style.display = "none";
     console.log(idVal);
     let payload = {
-        phoneNumber: phoneVal,
-        emailAddress: emailVal,
-        newFirstName: firstVal,
-        newLastName: lastVal,
+        contactPhone: phoneVal,
+        contactEmail: emailVal,
+        contactFirstName: firstVal,
+        contactLastName: lastVal,
         contactID: idVal
     }
 
@@ -135,9 +135,9 @@ deleteContact = (num) => {
         document.getElementById("row" + num + "").outerHTML = "";
 
         let payload = {
-            FirstName: nameFirst,
-            LastName: nameLast,
-            UserID: userId
+            contactFirstName: nameFirst,
+            contactLastName: nameLast,
+            userID: userId
         };
 
         let jsonPayload = JSON.stringify(payload);
@@ -199,15 +199,15 @@ addContact = () => {
 
     console.log(document.cookie)
     let payload = {
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber,
-        emailAddress: emailAddress,
-        userId: userId
+        contactFirstName: firstName,
+        contactLastName: lastName,
+        contactPhone: phoneNumber,
+        contactEmail: emailAddress,
+        userID: userId
     }
 
     console.log(payload)
-    console.log(payload.userId)
+    // console.log(payload.UserID)
     if (!validateForm(payload)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED")
         return

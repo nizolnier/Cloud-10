@@ -9,11 +9,11 @@
 
     $inData = getRequestInfo();
 
-	$phoneNumber = $inData["phoneNumber"];
-	$emailAddress = $inData["emailAddress"];
-	$newFirst = $inData["newFirstName"];
-	$newLast = $inData["newLastName"];
-	$id = $inData["contactID"];
+	$contactPhone = $inData["contactPhone"];
+	$contactEmail = $inData["contactEmail"];
+	$contactFirstName = $inData["contactFirstName"];
+	$contactLastName = $inData["contactLastName"];
+	$contactID = $inData["contactID"];
 
 	# This is best for local curls
     # $phoneNumber = $_POST['phoneNumber'];
@@ -36,7 +36,7 @@
 		else
 		{
 			$stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName=?, Phone= ?, Email= ? WHERE ID= ?");
-			$stmt->bind_param("ssssi", $newFirst, $newLast, $phoneNumber, $emailAddress, $id);
+			$stmt->bind_param("ssssi", $contactFirstName, $contactLastName, $contactPhone, $contactEmail, $contactID);
 			$stmt->execute();
 			$stmt->close();
 			$conn->close();

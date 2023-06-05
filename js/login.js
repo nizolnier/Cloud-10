@@ -1,4 +1,4 @@
-const baseURL = 'http://146.190.67.167/LAMPAPI' 
+const baseURL = 'http://cop4331group10.xyz/LAMPAPI' 
 
 sendForm = () => {
     let username = document.getElementById("username").value
@@ -8,8 +8,8 @@ sendForm = () => {
     let lastName = "" 
 
     let payload = {
-        Login: username,
-        Password: password
+        username: username,
+        password: password
     }
 
     if (!validateForm(payload)) {
@@ -17,7 +17,7 @@ sendForm = () => {
         return
     }
 
-    payload.Password = md5(password)
+    payload.password = md5(password)
 
     let jsonPayload = JSON.stringify(payload) 
 
@@ -36,7 +36,7 @@ sendForm = () => {
                 console.log(newRequest.readyState);
 
                 let jsonObject = JSON.parse(newRequest.responseText);
-                userId = jsonObject.id;
+                userId = jsonObject.userID;
 
                 if (userId < 1) {
                     document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
@@ -60,27 +60,27 @@ sendForm = () => {
 }
 
 validateForm = (newLog) => {
-    const { Login, Password } = newLog
+    const { username, password } = newLog
 
-    if (Login == "") {
-        console.log("Login is blank")
+    if (username == "") {
+        console.log("Username is blank")
         return false
     }
     let regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/
 
-    if (regex.test(Login) == false) {
-        console.log("Login is not valid")
+    if (regex.test(username) == false) {
+        console.log("Username is not valid")
         return false
     }
 
-    if (Password == "") {
+    if (password == "") {
         console.log("Password is blank")
         return false
     }
 
     regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/
 
-    if (regex.test(Password) == false) {
+    if (regex.test(password) == false) {
         console.log("Password is not valid")
         return false
     }
