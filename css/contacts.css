@@ -196,10 +196,14 @@ td {
     margin: 0;
 }
 
+.actImg {
+    padding: 0.1em;
+}
 
 .actImg:hover {
-    background-color: #c859e3;
+    background-color: #04a404;
     border-radius: 4px;
+    filter: invert(1)
 }
 
 tr:nth-child(even) {
