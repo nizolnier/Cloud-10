@@ -20,7 +20,7 @@
 	else
 	{
 		$stmt = $conn->prepare("SELECT ID, FirstName, LastName FROM Users WHERE Login=? AND Password =?");
-		$stmt->bind_param("ss", $inData['Login'], $inData['Password']);
+		$stmt->bind_param("ss", $inData['username'], $inData['password']);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
@@ -56,7 +56,7 @@
 	
 	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"userID":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	

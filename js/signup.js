@@ -25,7 +25,7 @@ sendForm = () => {
     let payload = {
         firstName: fname,
         lastName: lname,
-        login: username,
+        username: username,
         password: password
     }
 
