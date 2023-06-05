@@ -97,7 +97,7 @@ h1 {
 
 button {
     border: none;
-    background: #F8F8F8;
+    background: transparent;
     cursor: pointer;
 }
 
