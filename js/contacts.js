@@ -2,6 +2,17 @@ const baseURL = 'http://cop4331group10.xyz/LAMPAPI';
 const extension = 'php';
 const ids = []
 
+checkKey = (e) => {
+    let keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else return true;
+
+    if (keycode == 13) {
+        addContact()
+    }
+}
+
 logout = () => {
     userId = 0;
     firstName = "";
@@ -44,9 +55,9 @@ showContacts = () => {
                     elem += "<td id='email" + i + "'><span>" + jsonObject.results[i].contactEmail + "</span></td>";
                     elem += "<td id='phone" + i + "'><span>" + jsonObject.results[i].contactPhone + "</span></td>";
                     elem += "<td>" + 
-                        "<button type='button' id='editBtn" + i + "' onclick='editContact(" + i + ")'>" + "<img src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
-                        "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img src='./images/save.svg' alt='Save Changes'>" + "</button>" +
-                        "<button type='button' onclick='deleteContact(" + i + ")'>" + "<img src='./images/trash.svg' alt='Delete Contact'>" + "</button>" + "</td>";
+                        "<button type='button' id='editBtn" + i + "' onclick='editContact(" + i + ")'>" + "<img class='actImg' src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
+                        "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img class='actImg' src='./images/save.svg' alt='Save Changes'>" + "</button>" +
+                        "<button type='button' onclick='deleteContact(" + i + ")'>" + "<img class='actImg' src='./images/trash.svg' alt='Delete Contact'>" + "</button>" + "</td>";
                 }
                 document.getElementById("contactsTable").innerHTML = elem;
             }
@@ -75,9 +86,14 @@ editContact = (id) => {
 
     first.innerHTML = "<input type='text' id='firstTxt" + id + "' value='" + firstText + "'>";
     last.innerHTML = "<input type='text' id='lastTxt" + id + "' value='" + lastText + "'>";
-    email.innerHTML = "<input type='text' id='emailTxt" + id + "' value='" + emailText + "'>";
-    phone.innerHTML = "<input type='text' id='phoneTxt" + id + "' value='" + phoneText + "'>"
+    email.innerHTML = "<input type='email' pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$' id='emailTxt" + id + "' value='" + emailText + "'>";
+    phone.innerHTML = "<input type='text' pattern='^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$' id='phoneTxt" + id + "' value='" + phoneText + "'>"
 
+}
+
+resetContactTitle = () => {
+    document.getElementById("editResult").innerHTML = "Contacts"
+    showContacts()
 }
 
 saveContact = (num) => {
@@ -101,6 +117,13 @@ saveContact = (num) => {
         contactFirstName: firstVal,
         contactLastName: lastVal,
         contactID: idVal
+    }
+
+    if (!validateEditForm(payload)) {
+        console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED")
+        document.getElementById("editResult").innerHTML = "Invalid contact!"
+        setTimeout(resetContactTitle, 1500)
+        return
     }
 
     let jsonPayload = JSON.stringify(payload);
@@ -149,8 +172,8 @@ deleteContact = (num) => {
         try {
             newRequest.onreadystatechange = () => {
                 if(newRequest.readyState == 4 && newRequest.status == 200) {
-                    console.log("Contact deleted");
-                    showContacts();
+                    document.getElementById("editResult").innerHTML = "Contact deleted"
+                    setTimeout(resetContactTitle, 1500)
                 }
             }
             newRequest.send(jsonPayload);
@@ -210,6 +233,7 @@ addContact = () => {
     // console.log(payload.UserID)
     if (!validateForm(payload)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED")
+        document.getElementById("addResult").innerHTML = "Invalid contact information!"
         return
     }
 
@@ -226,7 +250,7 @@ addContact = () => {
                 document.getElementById("addResult").innerHTML = "Contact has been added"
                 // clear input fields in form 
                 document.getElementById("addMe").reset()
-                // reload contacts table and switch view to show
+                // reload contacts table and close modal
                 modal.style.display = "none"
                 showContacts()
             }
@@ -234,17 +258,61 @@ addContact = () => {
         
     } catch (err) {
         console.log(err.message)
+        document.getElementById("addResult").innerHTML = err.message
     }
+
 }
 
 validateForm = (newC) => {
-    const { firstName, lastName, emailAddress, phoneNumber } = newC
+    const { firtName, lastName, phoneNumber, emailAddress } = newC
 
-    if (firstName == "") {
+
+    if (firtName == "") {
         console.log("First name is blank")
         return false
     }
     if (lastName == "") {
+        console.log("Last name is blank")
+        return false
+    }
+    if (phoneNumber == "") {
+        console.log("Phone is blank")
+        return false
+    }
+
+    let regex = /^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$/
+
+    if (regex.test(phoneNumber) == false) {
+        console.log("Phone is not valid")
+        return false
+    }
+
+
+
+    if (emailAddress == "") {
+        console.log("Email is blank")
+        return false
+    }
+
+    regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+
+    if (regex.test(emailAddress) == false) {
+        console.log("Email is not valid")
+        return false
+    }
+
+    return true;
+}
+
+validateEditForm = (newC) => {
+    const { phoneNumber, emailAddress, newFirstName, newLastName } = newC
+
+
+    if (newFirstName == "") {
+        console.log("First name is blank")
+        return false
+    }
+    if (newLastName == "") {
         console.log("Last name is blank")
         return false
     }

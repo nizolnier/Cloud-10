@@ -44,9 +44,12 @@
         <div class="mainContainer">
             <div id="userName" class="header">Welcome!</div>
             <div class="actionMenu">
-                <h1>Contacts</h1>
+                <h1 id="editResult">Contacts</h1>
                 <div class="searchAction">
-                    <input id="search" onkeyup="searchContacts()" type="text" name="search" class="search" placeholder="  Search..." />
+                    <div class="search">
+                        <input id="search" onkeyup="searchContacts()" type="text" name="search" placeholder="Search..." />
+                        <img src="./images/search.svg" />
+                    </div>
                     <button id="add" class="add">New +</button>
                 </div>
             </div>
@@ -65,7 +68,7 @@
         <div id="myModal" class="modal">
             <form id="addMe" class="modal-content">
                 <span class="close">&times;</span>
-                <h1>Create new Contact</h1>
+                <h2>Create new Contact</h2>
                 <div id="addResult">Enter all the information</div>
                     <div class="modalFormItem">
                         <label>First Name *</label>
@@ -84,7 +87,7 @@
                     </div>
                     <div class="modalFormItem">
                         <label>Phone *</label>
-                        <input required id="contactNumber" class="modalInput" placeholder="Enter contact's phone number"
+                        <input onkeypress="checkKey(event)" required id="contactNumber" class="modalInput" placeholder="Enter contact's phone number"
                             type="text" pattern="^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$" />
                     </div>
                     <button id="addButton" onclick="addContact()" type="button" class="modalButton">Create Contact</button>
