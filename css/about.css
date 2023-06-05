@@ -10,7 +10,7 @@ html, body{
     height: 100%;
     margin: 0;
     background: linear-gradient(71.17deg, #8F44D9 19.35%, #C92DC9 90.12%);
-    overflow: auto;
+    overflow: hidden;
     z-index: -1;
 }
 nav{
