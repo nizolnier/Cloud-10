@@ -47,6 +47,18 @@ a {
     justify-content: space-around;
     cursor: pointer;
     font-size: 16px;
+    transition: background 0.35s;
+}
+
+.menuItem:hover {
+    background: #A700D0;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.menuItem:hover  > img {
+    filter: invert(1);
 }
 
 .header {
@@ -93,6 +105,19 @@ h1 {
     border: 1.5px solid #000000;
     border-radius: 8px;
     width: 212px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search > input {
+    border: none;
+    background: transparent;
+}
+
+
+.search > input:focus {
+    outline: none;
 }
 
 button {
@@ -124,6 +149,13 @@ button.add {
     border: none;
     color: white;
     width: 95px;
+    transition: background 0.35s;
+}
+
+button.add:hover {
+    background: #6d0387;
+    cursor: pointer;
+    
 }
 
 hr.new {
@@ -164,6 +196,15 @@ td {
     margin: 0;
 }
 
+.actImg {
+    padding: 0.1em;
+}
+
+.actImg:hover {
+    background-color: #04a404;
+    border-radius: 4px;
+    filter: invert(1)
+}
 
 tr:nth-child(even) {
     background: white;
@@ -277,4 +318,13 @@ label {
     display: flex;
     align-self: flex-start;
     padding-bottom: 0.5em;
+}
+
+h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #A700D0;   
 }
