@@ -2,6 +2,17 @@ const baseURL = 'http://cop4331group10.xyz/LAMPAPI';
 const extension = 'php';
 const ids = []
 
+checkKey = (e) => {
+    let keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else return true;
+
+    if (keycode == 13) {
+        addContact()
+    }
+}
+
 logout = () => {
     userId = 0;
     firstName = "";
@@ -44,9 +55,9 @@ showContacts = () => {
                     elem += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
                     elem += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
                     elem += "<td>" + 
-                        "<button type='button' id='editBtn" + i + "' onclick='editContact(" + i + ")'>" + "<img src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
-                        "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img src='./images/save.svg' alt='Save Changes'>" + "</button>" +
-                        "<button type='button' onclick='deleteContact(" + i + ")'>" + "<img src='./images/trash.svg' alt='Delete Contact'>" + "</button>" + "</td>";
+                        "<button type='button' id='editBtn" + i + "' onclick='editContact(" + i + ")'>" + "<img class='actImg' src='./images/edit.svg' alt='Edit Contact'>" + "</button>" +
+                        "<button type='button' id='saveBtn" + i + "' value='Save' onclick='saveContact(" + i + ")' style='display: none'>" + "<img class='actImg' src='./images/save.svg' alt='Save Changes'>" + "</button>" +
+                        "<button type='button' onclick='deleteContact(" + i + ")'>" + "<img class='actImg' src='./images/trash.svg' alt='Delete Contact'>" + "</button>" + "</td>";
                 }
                 document.getElementById("contactsTable").innerHTML = elem;
             }
@@ -75,8 +86,8 @@ editContact = (id) => {
 
     first.innerHTML = "<input type='text' id='firstTxt" + id + "' value='" + firstText + "'>";
     last.innerHTML = "<input type='text' id='lastTxt" + id + "' value='" + lastText + "'>";
-    email.innerHTML = "<input type='text' id='emailTxt" + id + "' value='" + emailText + "'>";
-    phone.innerHTML = "<input type='text' id='phoneTxt" + id + "' value='" + phoneText + "'>"
+    email.innerHTML = "<input type='email' pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$' id='emailTxt" + id + "' value='" + emailText + "'>";
+    phone.innerHTML = "<input type='text' pattern='^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$' id='phoneTxt" + id + "' value='" + phoneText + "'>"
 
 }
 
@@ -101,6 +112,11 @@ saveContact = (num) => {
         newFirstName: firstVal,
         newLastName: lastVal,
         contactID: idVal
+    }
+
+    if (!validateEditForm(payload)) {
+        console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED")
+        return
     }
 
     let jsonPayload = JSON.stringify(payload);
@@ -210,6 +226,7 @@ addContact = () => {
     console.log(payload.userId)
     if (!validateForm(payload)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED")
+        document.getElementById("addResult").innerHTML = "Invalid contact information!"
         return
     }
 
@@ -226,7 +243,7 @@ addContact = () => {
                 document.getElementById("addResult").innerHTML = "Contact has been added"
                 // clear input fields in form 
                 document.getElementById("addMe").reset()
-                // reload contacts table and switch view to show
+                // reload contacts table and close modal
                 modal.style.display = "none"
                 showContacts()
             }
@@ -234,17 +251,22 @@ addContact = () => {
         
     } catch (err) {
         console.log(err.message)
+        document.getElementById("addResult").innerHTML = err.message
     }
+
 }
 
-validateForm = (newC) => {
-    const { firstName, lastName, emailAddress, phoneNumber } = newC
 
-    if (firstName == "") {
+
+validateEditForm = (newC) => {
+    const { phoneNumber, emailAddress, newFirstName, newLastName } = newC
+
+
+    if (newFirstName == "") {
         console.log("First name is blank")
         return false
     }
-    if (lastName == "") {
+    if (newLastName == "") {
         console.log("Last name is blank")
         return false
     }

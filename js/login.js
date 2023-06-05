@@ -1,11 +1,22 @@
-const baseURL = 'http://146.190.67.167/LAMPAPI' 
+const baseURL = 'http://146.190.67.167/LAMPAPI'
+
+checkKey = (e) => {
+    let keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else return true;
+
+    if (keycode == 13) {
+        sendForm()
+    }
+}
 
 sendForm = () => {
     let username = document.getElementById("username").value
     let password = document.getElementById("password").value
-    let userId = 0 
-    let firstName = "" 
-    let lastName = "" 
+    let userId = 0
+    let firstName = ""
+    let lastName = ""
 
     let payload = {
         Login: username,
@@ -19,12 +30,12 @@ sendForm = () => {
 
     payload.Password = md5(password)
 
-    let jsonPayload = JSON.stringify(payload) 
+    let jsonPayload = JSON.stringify(payload)
 
-    let newRequest = new XMLHttpRequest() 
+    let newRequest = new XMLHttpRequest()
 
-    newRequest.open("POST", `${baseURL}/Login.php`, true) 
-    newRequest.setRequestHeader("Content-type", "application/json  charset=UTF-8") 
+    newRequest.open("POST", `${baseURL}/Login.php`, true)
+    newRequest.setRequestHeader("Content-type", "application/json  charset=UTF-8")
 
     try {
 
@@ -53,7 +64,7 @@ sendForm = () => {
             }
         }
 
-        
+
     } catch (err) {
         document.getElementById("loginResult").innerHTML = err.message;
     }

@@ -1,5 +1,16 @@
 const baseURL = 'http://cop4331group10.xyz/LAMPAPI';
 
+checkKey = (e) => {
+    let keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else return true;
+
+    if (keycode == 13) {
+        sendForm()
+    }
+}
+
 sendForm = () => {
     let fname = document.getElementById("fname").value
     let lname = document.getElementById("lname").value

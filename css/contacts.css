@@ -47,6 +47,18 @@ a {
     justify-content: space-around;
     cursor: pointer;
     font-size: 16px;
+    transition: background 0.35s;
+}
+
+.menuItem:hover {
+    background: #A700D0;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.menuItem:hover  > img {
+    filter: invert(1);
 }
 
 .header {
@@ -124,6 +136,13 @@ button.add {
     border: none;
     color: white;
     width: 95px;
+    transition: background 0.35s;
+}
+
+button.add:hover {
+    background: #6d0387;
+    cursor: pointer;
+    
 }
 
 hr.new {
@@ -164,6 +183,11 @@ td {
     margin: 0;
 }
 
+
+.actImg:hover {
+    background-color: #c859e3;
+    border-radius: 70%;
+}
 
 tr:nth-child(even) {
     background: white;
@@ -277,4 +301,13 @@ label {
     display: flex;
     align-self: flex-start;
     padding-bottom: 0.5em;
+}
+
+h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #A700D0;   
 }
