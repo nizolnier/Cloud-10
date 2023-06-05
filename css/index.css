@@ -10,12 +10,13 @@
     background: rgb(143, 68, 217);
     background: linear-gradient(71.17deg, #8F44D9 19.35%, #C92DC9 90.12%);
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo {
     width: 200px;
     height: 180px;
-
 }
 
 .clouds {
@@ -84,8 +85,11 @@ main {
     margin-top: 3em;
 }
 
+nav {
+    flex-grow: 1;
+}
+
 footer {
-    position: fixed;
-    bottom: 0;
-    top: 35.7em;
+    display: flex;
+    align-items: flex-end;
 }
