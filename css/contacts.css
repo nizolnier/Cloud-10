@@ -105,6 +105,19 @@ h1 {
     border: 1.5px solid #000000;
     border-radius: 8px;
     width: 212px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search > input {
+    border: none;
+    background: transparent;
+}
+
+
+.search > input:focus {
+    outline: none;
 }
 
 button {
