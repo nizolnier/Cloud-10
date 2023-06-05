@@ -20,9 +20,9 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select FirstName, LastName, Phone, Email, ID from Contacts where (FirstName like ? OR LastName like ? OR Phone like ? OR Email like ?)  and UserID=?");
+		$stmt = $conn->prepare("select FirstName, LastName, Phone, Email, ID from Contacts where (FirstName like ? OR LastName like ? OR Phone like ? OR Email like ?)  AND UserID=?");
 		$contactName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ssssi", $contactName, $contactName, $contactName, $contactName, $inData["UserID"]);
+		$stmt->bind_param("ssssi", $contactName, $contactName, $contactName, $contactName, $inData["userID"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
@@ -34,7 +34,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-            $searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '", "ID" : "' . $row["ID"]. '"}';
+            $searchResults .= '{"contactFirstName" : "' . $row["FirstName"]. '", "contactLastName" : "' . $row["LastName"]. '", "contactPhone" : "' . $row["Phone"]. '", "contactEmail" : "' . $row["Email"]. '", "contactID" : "' . $row["ID"]. '"}';
 		}
 		
 		if( $searchCount == 0 )
