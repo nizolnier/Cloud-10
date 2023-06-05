@@ -2,27 +2,25 @@
 
 * {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;    
+    font-family: 'Montserrat', sans-serif;
     overflow: hidden;
 }
 
 .gradient {
-    background: rgb(143,68,217);
+    background: rgb(143, 68, 217);
     background: linear-gradient(71.17deg, #8F44D9 19.35%, #C92DC9 90.12%);
     height: 100vh;
 }
 
 .logo {
-    position: absolute;
     width: 200px;
     height: 180px;
-    left: 640px;
-    top: 50px;
+
 }
 
 .clouds {
     width: 100vw;
-    height: auto;
+    object-fit: cover;
 }
 
 h1 {
@@ -38,7 +36,7 @@ h1 {
 a {
     text-decoration: none;
     color: white;
-    
+
 }
 
 u {
@@ -66,7 +64,15 @@ p {
     text-align: center;
     justify-content: center;
     align-items: center;
+}
 
+.aboveAll {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 13;
 }
 
 main {
@@ -75,4 +81,11 @@ main {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    margin-top: 3em;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    top: 35.7em;
 }
