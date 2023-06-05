@@ -91,6 +91,11 @@ editContact = (id) => {
 
 }
 
+resetContactTitle = () => {
+    document.getElementById("editResult").innerHTML = "Contacts"
+    showContacts()
+}
+
 saveContact = (num) => {
     var firstVal = document.getElementById("firstTxt" + num).value;
     var lastVal = document.getElementById("lastTxt" + num).value;
@@ -116,6 +121,8 @@ saveContact = (num) => {
 
     if (!validateEditForm(payload)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED")
+        document.getElementById("editResult").innerHTML = "Invalid contact!"
+        setTimeout(resetContactTitle, 1500)
         return
     }
 
@@ -165,8 +172,8 @@ deleteContact = (num) => {
         try {
             newRequest.onreadystatechange = () => {
                 if(newRequest.readyState == 4 && newRequest.status == 200) {
-                    console.log("Contact deleted");
-                    showContacts();
+                    document.getElementById("editResult").innerHTML = "Contact deleted"
+                    setTimeout(resetContactTitle, 1500)
                 }
             }
             newRequest.send(jsonPayload);
@@ -256,7 +263,46 @@ addContact = () => {
 
 }
 
+validateForm = (newC) => {
+    const { firtName, lastName, phoneNumber, emailAddress } = newC
 
+
+    if (firtName == "") {
+        console.log("First name is blank")
+        return false
+    }
+    if (lastName == "") {
+        console.log("Last name is blank")
+        return false
+    }
+    if (phoneNumber == "") {
+        console.log("Phone is blank")
+        return false
+    }
+
+    let regex = /^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$/
+
+    if (regex.test(phoneNumber) == false) {
+        console.log("Phone is not valid")
+        return false
+    }
+
+
+
+    if (emailAddress == "") {
+        console.log("Email is blank")
+        return false
+    }
+
+    regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+
+    if (regex.test(emailAddress) == false) {
+        console.log("Email is not valid")
+        return false
+    }
+
+    return true;
+}
 
 validateEditForm = (newC) => {
     const { phoneNumber, emailAddress, newFirstName, newLastName } = newC
