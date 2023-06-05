@@ -41,20 +41,20 @@
 	{
 		$sql = "SELECT * FROM Users WHERE Login=?";
 		$stmt = $conn->prepare($sql);
-		$stmt->bind_param("s", $login);
+		$stmt->bind_param("s", $username);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$rows = mysqli_num_rows($result);
 		if ($rows == 0)
 		{
 			$stmt = $conn->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
-			$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
+			$stmt->bind_param("ssss", $firstName, $lastName, $username, $password);
 			$stmt->execute();
 			$id = $conn->insert_id;
 			$stmt->close();
 			$conn->close();
 			http_response_code(200);
-			$searchResults[] = array('id' => $id, 'firstName' => $firstName, 'lastName' => $lastName);
+			$searchResults[] = array('userID' => $id, 'firstName' => $firstName, 'lastName' => $lastName);
    			$json = json_encode($searchResults);
 			sendResultInfoAsJson($json);
 		} else {

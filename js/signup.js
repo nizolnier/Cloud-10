@@ -34,9 +34,9 @@ sendForm = () => {
         return
     }
 
-    payload.password = md5(payload.password)
+    payload.password = md5(payload.password);
 
-    const jsonPaylod = JSON.stringify(payload)
+    const jsonPaylod = JSON.stringify(payload);
 
     let newRequest = new XMLHttpRequest();
     
