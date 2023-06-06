@@ -34,7 +34,7 @@ sendForm = () => {
         return
     }
 
-    payload.password = md5(payload.password);
+    payload.password = sha256(payload.password);
 
     const jsonPaylod = JSON.stringify(payload);
 

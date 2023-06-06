@@ -28,7 +28,7 @@ sendForm = () => {
         return
     }
 
-    payload.password = md5(password)
+    payload.password = sha256(password)
 
     let jsonPayload = JSON.stringify(payload)
 
