@@ -45,6 +45,10 @@ showContacts = () => {
                     return;
                 }
 
+                // Performs sorting on contacts in the following order of data values
+                // [ contactFirstName, contactLastName, contactEmail, contactPhone ]
+                jsonObject.results = jsonObject.results.sort((a, b) => `${a.contactFirstName} ${a.contactLastName} ${a.contactEmail} ${a.contactPhone}`.localeCompare(`${b.contactFirstName} ${b.contactLastName} ${b.contactEmail} ${b.contactPhone}`));
+
                 let elem = "<tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th></th></tr>"
                 for(let i = 0; i < jsonObject.results.length; i++) {
                     ids[i] = jsonObject.results[i].contactID;
