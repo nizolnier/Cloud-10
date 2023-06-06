@@ -3,14 +3,10 @@
 	
 	$inData = getRequestInfo();
 
-    $userID = $inData["UserID"];
-    $firstName = $inData["FirstName"];
-    $lastName = $inData["LastName"];
+    $userID = $inData["userID"];
+    $contactFirstName = $inData["contactFirstName"];
+    $contactLastName = $inData["contactLastName"];
 
-	# $userId = $_POST['UserID'];
-	# $firstName = $_POST['firstName'];
-	# $lastName = $_POST['lastName'];
-	
 
 	header('Access-Control-Allow-Origin: *');
 	header("Content-Type: application/json");
@@ -25,7 +21,7 @@
 	else
 	{
 		$stmt = $conn->prepare("DELETE FROM Contacts WHERE FirstName=? AND LastName=? AND UserID=?");
-		$stmt->bind_param("ssi", $firstName, $lastName, $userID);
+		$stmt->bind_param("ssi", $contactFirstName, $contactLastName, $userID);
 		$stmt->execute();
         $stmt->close();
         $conn->close();

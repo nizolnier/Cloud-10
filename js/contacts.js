@@ -119,7 +119,7 @@ saveContact = (num) => {
         contactID: idVal
     }
 
-    if (!validateEditForm(payload)) {
+    if (!validateForm(payload)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED")
         document.getElementById("editResult").innerHTML = "Invalid contact!"
         setTimeout(resetContactTitle, 1500)
@@ -264,80 +264,39 @@ addContact = () => {
 }
 
 validateForm = (newC) => {
-    const { firtName, lastName, phoneNumber, emailAddress } = newC
+    const { contactPhone, contactEmail, contactFirstName, contactLastName } = newC
 
 
-    if (firtName == "") {
+    if (contactFirstName == "") {
         console.log("First name is blank")
         return false
     }
-    if (lastName == "") {
+    if (contactLastName == "") {
         console.log("Last name is blank")
         return false
     }
-    if (phoneNumber == "") {
+    if (contactPhone == "") {
         console.log("Phone is blank")
         return false
     }
 
     let regex = /^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$/
 
-    if (regex.test(phoneNumber) == false) {
+    if (regex.test(contactPhone) == false) {
         console.log("Phone is not valid")
         return false
     }
 
 
 
-    if (emailAddress == "") {
+    if (contactEmail == "") {
         console.log("Email is blank")
         return false
     }
 
     regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-    if (regex.test(emailAddress) == false) {
-        console.log("Email is not valid")
-        return false
-    }
-
-    return true;
-}
-
-validateEditForm = (newC) => {
-    const { phoneNumber, emailAddress, newFirstName, newLastName } = newC
-
-
-    if (newFirstName == "") {
-        console.log("First name is blank")
-        return false
-    }
-    if (newLastName == "") {
-        console.log("Last name is blank")
-        return false
-    }
-    if (phoneNumber == "") {
-        console.log("Phone is blank")
-        return false
-    }
-
-    let regex = /^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$/
-
-    if (regex.test(phoneNumber) == false) {
-        console.log("Phone is not valid")
-        return false
-    }
-
-
-
-    if (emailAddress == "") {
-        console.log("Email is blank")
-        return false
-    }
-
-    regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-
-    if (regex.test(emailAddress) == false) {
+    if (regex.test(contactEmail) == false) {
         console.log("Email is not valid")
         return false
     }
