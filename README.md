@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  Cloud 10 - A Contact Manager
+  <a href="https://astromatch-nz.surge.sh/"><img src="./images/cloud-10.svg" alt="logo astromatch" width="500"></a>
   <br>
 </h1>
 
