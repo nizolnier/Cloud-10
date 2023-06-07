@@ -78,15 +78,15 @@ editContact = (id) => {
     document.getElementById("editBtn" + id).style.display = "none";
     document.getElementById("saveBtn" + id).style.display = "inline-block";
 
-    var first = document.getElementById("firstName" + id);
-    var last = document.getElementById("lastName" + id);
-    var email = document.getElementById("email" + id);
-    var phone = document.getElementById("phone" + id);
+    let first = document.getElementById("firstName" + id);
+    let last = document.getElementById("lastName" + id);
+    let email = document.getElementById("email" + id);
+    let phone = document.getElementById("phone" + id);
 
-    var firstText = first.innerText;
-    var lastText = last.innerText;
-    var emailText = email.innerText;
-    var phoneText = phone.innerText;
+    let firstText = first.innerText;
+    let lastText = last.innerText;
+    let emailText = email.innerText;
+    let phoneText = phone.innerText;
 
     first.innerHTML = "<input type='text' id='firstTxt" + id + "' value='" + firstText + "'>";
     last.innerHTML = "<input type='text' id='lastTxt" + id + "' value='" + lastText + "'>";
@@ -101,11 +101,11 @@ resetContactTitle = () => {
 }
 
 saveContact = (num) => {
-    var firstVal = document.getElementById("firstTxt" + num).value;
-    var lastVal = document.getElementById("lastTxt" + num).value;
-    var emailVal = document.getElementById("emailTxt" + num).value;
-    var phoneVal = document.getElementById("phoneTxt" + num).value;
-    var idVal = ids[num];
+    let firstVal = document.getElementById("firstTxt" + num).value;
+    let lastVal = document.getElementById("lastTxt" + num).value;
+    let emailVal = document.getElementById("emailTxt" + num).value;
+    let phoneVal = document.getElementById("phoneTxt" + num).value;
+    let idVal = ids[num];
     console.log('HELLO THIS IS ID: ' + ids[num]); 
     document.getElementById("firstName" + num).innerHTML = firstVal;
     document.getElementById("lastName" + num).innerHTML = lastVal;
@@ -151,9 +151,9 @@ saveContact = (num) => {
 }
 
 deleteContact = (num) => {
-    var firstVal = document.getElementById("firstName" + num).innerText;
-    var lastVal = document.getElementById("lastName" + num).innerText;
-    // var userId = ids[num]
+    let firstVal = document.getElementById("firstName" + num).innerText;
+    let lastVal = document.getElementById("lastName" + num).innerText;
+    // let userId = ids[num]
     nameFirst = firstVal.substring(0, firstVal.length);
     nameLast = lastVal.substring(0, lastVal.length);
 
@@ -256,7 +256,9 @@ addContact = () => {
                 document.getElementById("addMe").reset()
                 // reload contacts table and close modal
                 modal.style.display = "none"
+                document.getElementById("addResult").innerHTML = "Enter all the information"
                 showContacts()
+
             }
         };
         

@@ -38,6 +38,7 @@ form {
 #loginResult {
     color: #6C6C6C;
     padding: 1.5em;
+    cursor: default;
 }
 
 h1 {
@@ -47,6 +48,7 @@ h1 {
     font-size: 22px;
     line-height: 27px;
     color: #A700D0;
+    cursor: default;
 }
 
 .formItem {
@@ -118,6 +120,7 @@ p {
     font-size: 14px;
     line-height: 17px;
     color: #6C6C6C;
+    cursor: default;
 }
 
 u {

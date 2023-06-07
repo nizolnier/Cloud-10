@@ -17,6 +17,11 @@
 .logo {
     width: 200px;
     height: 180px;
+    transition: opacity 0.35s;
+}
+
+.logo:hover {
+    opacity: 65%;
 }
 
 
@@ -33,6 +38,11 @@ h1 {
     line-height: 78px;
     color: white;
     padding: 0.6em;
+    transition: opacity 0.35s;
+}
+
+h1:hover {
+    opacity: 65%;
 }
 
 
@@ -67,6 +77,12 @@ p {
     text-align: center;
     justify-content: center;
     align-items: center;
+    transition: background 0.35s;
+}
+
+.clicky:hover {
+    background: #6d0387;
+    cursor: pointer;
 }
 
 .aboveAll {
